@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # files for testing stuff
-#/Hoi4/*
+/Hoi4/*
