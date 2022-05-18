@@ -1,5 +1,5 @@
 module.exports = grammar({
-    name: 'Hoi4',
+    name: 'HoI4',
     extras: $ => [
         /\s|\r?\n/,
         $.comment,
@@ -47,11 +47,11 @@ module.exports = grammar({
             $.identifier,
             '=',
             '{',
-            repeat($.idea_content),
+            repeat($._idea_content),
             '}'
         ),
 
-        idea_content: $ => choice(
+        _idea_content: $ => choice(
             // Triggers
             $.available,
             $.allowed,
