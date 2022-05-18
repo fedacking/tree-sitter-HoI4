@@ -73,12 +73,11 @@ module.exports = grammar({
 
         _idea_content: $ => choice(
             // Triggers
-            $.available,
-            $.allowed,
-            $.allowed_civil_war,
-            $.cancel,
+            $.idea_content_trigger,
+
             // Modifiers
             $.idea_modifiers,
+            
             // Effects
             $.on_add,
 
@@ -89,26 +88,14 @@ module.exports = grammar({
             $.cancel_if_invalid
         ),
 
-        available: $ => seq(
-            'available',
-            '=',
-            $.trigger_block,
-        ),
-
-        allowed: $ => seq(
-            'allowed',
-            '=',
-            $.trigger_block,
-        ),
-
-        allowed_civil_war: $ => seq(
-            'allowed_civil_war',
-            '=',
-            $.trigger_block,
-        ),
-
-        cancel: $ => seq(
-            'cancel',
+        idea_content_trigger: $ => seq(
+            choice(
+                'available',
+                'allowed',
+                'allowed_civil_war',
+                'cancel',
+                'ai_will_do'
+            ),
             '=',
             $.trigger_block,
         ),
@@ -169,7 +156,7 @@ module.exports = grammar({
 
         modifier_block: $ => seq(
             '{',
-            repeat($.modifier),
+            repeat($._modifier),
             '}'
         ),
 
@@ -182,6 +169,20 @@ module.exports = grammar({
         _trigger: $ => choice(
             $.check_variable,
             $.comp_trigger,
+            $.trigger_scope_change,
+        ),
+
+        trigger_scope_change: $ => seq(
+            $.identifier,
+            "=",
+            $.trigger_limit_block
+        ),
+
+        trigger_limit_block: $ => seq(
+            '{',
+            optional($.limit_trigger_block),
+            repeat($._trigger),
+            '}'
         ),
 
         check_variable: $ => seq(
@@ -218,11 +219,11 @@ module.exports = grammar({
                 'equals',
                 'not_equals',
             ),
-			optional(
+			optional(seq(
 				'tooltip',
 				'=',
-				$.identifier
-			)
+				$.loc_key
+			))
         ),
 
         check_variable_short: $ => seq(
@@ -254,10 +255,21 @@ module.exports = grammar({
             )
         ),
 
+        _modifier: $ => choice(
+            $.modifier,
+            $.custom_modifier_tooltip
+        ),
+
         modifier: $ => seq(
             $.identifier,
             "=",
             $.number
+        ),
+
+        custom_modifier_tooltip: $ => seq(
+            'custom_modifier_tooltip',
+            '=',
+            $.loc_key
         ),
 
         _effect: $ => choice(
@@ -364,17 +376,17 @@ module.exports = grammar({
         scope_change: $ => seq(
             $.identifier,
             "=",
-            $.limit_effect_block
+            $.effect_limit_block
         ),
 
-        limit_effect_block: $ => seq(
+        effect_limit_block: $ => seq(
             '{',
-            optional($.limit_trigger_bloc),
+            optional($.limit_trigger_block),
             repeat($._effect),
             '}'
         ),
 
-        limit_trigger_bloc: $ => seq(
+        limit_trigger_block: $ => seq(
             'limit',
             '=',
             $.trigger_block,
@@ -393,6 +405,7 @@ module.exports = grammar({
         )),
 
         identifier: $ => /[a-zA-Z_]\w*/,
+        loc_key: $ => /[a-zA-Z_]\w*/,
 
         comment: $ => token(
             seq('#', /(\\(.|\r?\n)|[^\\\n])*/),

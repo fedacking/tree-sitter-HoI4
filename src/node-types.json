@@ -1,65 +1,5 @@
 [
   {
-    "type": "allowed",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "trigger_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "allowed_civil_war",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "trigger_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "available",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "trigger_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "cancel",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "trigger_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "cancel_if_invalid",
     "named": true,
     "fields": {}
@@ -93,6 +33,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "loc_key",
           "named": true
         },
         {
@@ -156,6 +100,21 @@
     }
   },
   {
+    "type": "custom_modifier_tooltip",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "loc_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "default",
     "named": true,
     "fields": {}
@@ -189,6 +148,41 @@
       "types": [
         {
           "type": "dynamic_modifier_effect",
+          "named": true
+        },
+        {
+          "type": "log_effect",
+          "named": true
+        },
+        {
+          "type": "scope_change",
+          "named": true
+        },
+        {
+          "type": "scripted_effect",
+          "named": true
+        },
+        {
+          "type": "variable_math_effect",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "effect_limit_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "dynamic_modifier_effect",
+          "named": true
+        },
+        {
+          "type": "limit_trigger_block",
           "named": true
         },
         {
@@ -253,27 +247,15 @@
       "required": false,
       "types": [
         {
-          "type": "allowed",
-          "named": true
-        },
-        {
-          "type": "allowed_civil_war",
-          "named": true
-        },
-        {
-          "type": "available",
-          "named": true
-        },
-        {
-          "type": "cancel",
-          "named": true
-        },
-        {
           "type": "cancel_if_invalid",
           "named": true
         },
         {
           "type": "default",
+          "named": true
+        },
+        {
+          "type": "idea_content_trigger",
           "named": true
         },
         {
@@ -294,6 +276,21 @@
         },
         {
           "type": "removal_cost",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "idea_content_trigger",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "trigger_block",
           "named": true
         }
       ]
@@ -334,6 +331,11 @@
     }
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "law_idea_block",
     "named": true,
     "fields": {},
@@ -367,42 +369,7 @@
     "fields": {}
   },
   {
-    "type": "limit_effect_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "dynamic_modifier_effect",
-          "named": true
-        },
-        {
-          "type": "limit_trigger_bloc",
-          "named": true
-        },
-        {
-          "type": "log_effect",
-          "named": true
-        },
-        {
-          "type": "scope_change",
-          "named": true
-        },
-        {
-          "type": "scripted_effect",
-          "named": true
-        },
-        {
-          "type": "variable_math_effect",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "limit_trigger_bloc",
+    "type": "limit_trigger_block",
     "named": true,
     "fields": {},
     "children": {
@@ -415,6 +382,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "loc_key",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "log_effect",
@@ -467,6 +439,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "custom_modifier_tooltip",
+          "named": true
+        },
         {
           "type": "modifier",
           "named": true
@@ -528,11 +504,11 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "effect_limit_block",
           "named": true
         },
         {
-          "type": "limit_effect_block",
+          "type": "identifier",
           "named": true
         }
       ]
@@ -586,6 +562,56 @@
         },
         {
           "type": "comp_trigger",
+          "named": true
+        },
+        {
+          "type": "trigger_scope_change",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "trigger_limit_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "check_variable",
+          "named": true
+        },
+        {
+          "type": "comp_trigger",
+          "named": true
+        },
+        {
+          "type": "limit_trigger_block",
+          "named": true
+        },
+        {
+          "type": "trigger_scope_change",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "trigger_scope_change",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "trigger_limit_block",
           "named": true
         }
       ]
@@ -673,6 +699,10 @@
     "named": false
   },
   {
+    "type": "ai_will_do",
+    "named": false
+  },
+  {
     "type": "allowed",
     "named": false
   },
@@ -713,6 +743,10 @@
     "named": false
   },
   {
+    "type": "custom_modifier_tooltip",
+    "named": false
+  },
+  {
     "type": "days",
     "named": false
   },
@@ -743,10 +777,6 @@
   {
     "type": "ideas",
     "named": false
-  },
-  {
-    "type": "identifier",
-    "named": true
   },
   {
     "type": "law",
@@ -830,6 +860,10 @@
   },
   {
     "type": "subtract_from_variable",
+    "named": false
+  },
+  {
+    "type": "tooltip",
     "named": false
   },
   {

@@ -206,19 +206,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "available"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "allowed"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "allowed_civil_war"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "cancel"
+          "name": "idea_content_trigger"
         },
         {
           "type": "SYMBOL",
@@ -250,63 +238,33 @@
         }
       ]
     },
-    "available": {
+    "idea_content_trigger": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "available"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "SYMBOL",
-          "name": "trigger_block"
-        }
-      ]
-    },
-    "allowed": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "allowed"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "SYMBOL",
-          "name": "trigger_block"
-        }
-      ]
-    },
-    "allowed_civil_war": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "allowed_civil_war"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "SYMBOL",
-          "name": "trigger_block"
-        }
-      ]
-    },
-    "cancel": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "cancel"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "available"
+            },
+            {
+              "type": "STRING",
+              "value": "allowed"
+            },
+            {
+              "type": "STRING",
+              "value": "allowed_civil_war"
+            },
+            {
+              "type": "STRING",
+              "value": "cancel"
+            },
+            {
+              "type": "STRING",
+              "value": "ai_will_do"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -486,7 +444,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "modifier"
+            "name": "_modifier"
           }
         },
         {
@@ -525,6 +483,59 @@
         {
           "type": "SYMBOL",
           "name": "comp_trigger"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "trigger_scope_change"
+        }
+      ]
+    },
+    "trigger_scope_change": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "trigger_limit_block"
+        }
+      ]
+    },
+    "trigger_limit_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "limit_trigger_block"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_trigger"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
@@ -643,6 +654,31 @@
               "value": "not_equals"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "tooltip"
+                },
+                {
+                  "type": "STRING",
+                  "value": "="
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "loc_key"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -733,6 +769,19 @@
         }
       ]
     },
+    "_modifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "modifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "custom_modifier_tooltip"
+        }
+      ]
+    },
     "modifier": {
       "type": "SEQ",
       "members": [
@@ -747,6 +796,23 @@
         {
           "type": "SYMBOL",
           "name": "number"
+        }
+      ]
+    },
+    "custom_modifier_tooltip": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "custom_modifier_tooltip"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loc_key"
         }
       ]
     },
@@ -1069,11 +1135,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "limit_effect_block"
+          "name": "effect_limit_block"
         }
       ]
     },
-    "limit_effect_block": {
+    "effect_limit_block": {
       "type": "SEQ",
       "members": [
         {
@@ -1085,7 +1151,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "limit_trigger_bloc"
+              "name": "limit_trigger_block"
             },
             {
               "type": "BLANK"
@@ -1105,7 +1171,7 @@
         }
       ]
     },
-    "limit_trigger_bloc": {
+    "limit_trigger_block": {
       "type": "SEQ",
       "members": [
         {
@@ -1178,6 +1244,10 @@
       }
     },
     "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_]\\w*"
+    },
+    "loc_key": {
       "type": "PATTERN",
       "value": "[a-zA-Z_]\\w*"
     },
