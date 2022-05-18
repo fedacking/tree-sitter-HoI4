@@ -7,15 +7,31 @@ module.exports = grammar({
     
     rules: {
         // Ideas Block
+
+        translation_unit: $ => choice(
+            $.ideas_declaration,
+            $.function_declarations
+        ),
+
+        function_declarations: $ => repeat1(
+          $.function_declaration
+        ),
+
+        function_declaration: $ => seq(
+            $.identifier,
+            '=',
+            $.effect_block
+        ),
+
         ideas_declaration: $ => seq(
             'ideas',
             '=',
             '{',
-            repeat($.top_level_idea),
+            repeat($._top_level_idea),
             '}'
         ),
         
-        top_level_idea: $ => choice(
+        _top_level_idea: $ => choice(
             $.country_idea_block,
             $.law_idea_block
         ),
@@ -147,7 +163,7 @@ module.exports = grammar({
 
         trigger_block: $ => seq(
             '{',
-            repeat($.trigger),
+            repeat($._trigger),
             '}'
         ),
 
@@ -159,11 +175,68 @@ module.exports = grammar({
 
         effect_block: $ => seq(
             '{',
-            repeat($.effect),
+            repeat($._effect),
             '}'
         ),
 
-        trigger: $ => seq(
+        _trigger: $ => choice(
+            $.check_variable,
+            $.comp_trigger,
+        ),
+
+        check_variable: $ => seq(
+            'check_variable',
+            '=',
+            '{',
+            choice(
+                $.check_variable_long,
+                $.check_variable_short,
+            ),
+            '}'
+        ),
+
+        check_variable_long: $ => seq(
+            'var',
+            '=',
+            choice(
+                $.number,
+                $.identifier
+            ),
+            'value',
+            '=',
+            choice(
+                $.number,
+                $.identifier
+            ),
+            'compare',
+            '=',
+            choice(
+                'less_than',
+                'less_than_or_equals',
+                'greater_than',
+                'greater_than_or_equals',
+                'equals',
+                'not_equals',
+            ),
+        ),
+
+        check_variable_short: $ => seq(
+            choice(
+                $.number,
+                $.identifier
+            ),
+            choice(
+                "=",
+                ">",
+                "<"
+            ),
+            choice(
+                $.number,
+                $.identifier
+            )
+        ),
+
+        comp_trigger: $ => seq(
             $.identifier,
             choice(
                 "=",
@@ -182,10 +255,21 @@ module.exports = grammar({
             $.number
         ),
 
-        effect: $ => choice(
-            $.log_effect, // Para que no repita el nombre
-            $.set_variable,
+        _effect: $ => choice(
+            // log is special
+            $.log_effect, 
+
+            // every effect = yes 
             $.scripted_effect,
+
+            // any blahblah = { effects }
+            $.scope_change,
+
+            // Variable Math
+            $.variable_math_effect,
+
+            // Unique stuff
+            $.dynamic_modifier_effect
         ),
 
         log_effect: $ => seq(
@@ -198,18 +282,54 @@ module.exports = grammar({
             ))
         ),
 
-        set_variable: $ => seq(
-            "set_variable",
+        variable_math_effect: $ => seq(
+            choice(
+                // Normal
+                'set_variable',
+                'add_to_variable',
+                'subtract_from_variable',
+                'divide_variable',
+                'modulo_variable',
+                // Temp
+                'set_temp_variable',
+                'add_to_temp_variable',
+                'subtract_from_temp_variable',
+                'divide_temp_variable',
+                'modulo_temp_variable'
+            ),
             "=",
             "{",
             choice(
-                $.set_variable_long,
-                $.set_variable_short
+                $.variable_math_effect_long,
+                $.variable_math_effect_short
             ),
             "}"
         ),
 
-        set_variable_short: $ => seq(
+        dynamic_modifier_effect: $ => seq(
+            choice(
+                'add_dynamic_modifier',
+                'remove_dynamic_modifier'
+            ),
+            '=',
+            '{',
+            'modifier',
+            '=',
+            $.identifier,
+            optional(seq(
+                'scope',
+                '=',
+                $.identifier
+            )),
+            optional(seq(
+                'days',
+                '=',
+                $.number
+            )),
+            '}'
+        ),
+
+        variable_math_effect_short: $ => seq(
             $.identifier,
             "=",
             choice(
@@ -218,7 +338,7 @@ module.exports = grammar({
             ),
         ),
 
-        set_variable_long: $ => seq(
+        variable_math_effect_long: $ => seq(
             "var",
             "=",
             $.identifier,
@@ -234,6 +354,25 @@ module.exports = grammar({
             $.identifier,
             "=",
             "yes"
+        ),
+
+        scope_change: $ => seq(
+            $.identifier,
+            "=",
+            $.limit_effect_block
+        ),
+
+        limit_effect_block: $ => seq(
+            '{',
+            optional($.limit_trigger_bloc),
+            repeat($._effect),
+            '}'
+        ),
+
+        limit_trigger_bloc: $ => seq(
+            'limit',
+            '=',
+            $.trigger_block,
         ),
 
         number: $ => token(seq(

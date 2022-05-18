@@ -65,6 +65,82 @@
     "fields": {}
   },
   {
+    "type": "check_variable",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "check_variable_long",
+          "named": true
+        },
+        {
+          "type": "check_variable_short",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "check_variable_long",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "check_variable_short",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comp_trigger",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "country_idea_block",
     "named": true,
     "fields": {},
@@ -85,23 +161,19 @@
     "fields": {}
   },
   {
-    "type": "effect",
+    "type": "dynamic_modifier_effect",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "log_effect",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "scripted_effect",
-          "named": true
-        },
-        {
-          "type": "set_variable",
+          "type": "number",
           "named": true
         }
       ]
@@ -116,7 +188,57 @@
       "required": false,
       "types": [
         {
-          "type": "effect",
+          "type": "dynamic_modifier_effect",
+          "named": true
+        },
+        {
+          "type": "log_effect",
+          "named": true
+        },
+        {
+          "type": "scope_change",
+          "named": true
+        },
+        {
+          "type": "scripted_effect",
+          "named": true
+        },
+        {
+          "type": "variable_math_effect",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "effect_block",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_declarations",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "function_declaration",
           "named": true
         }
       ]
@@ -127,8 +249,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
           "type": "allowed",
@@ -201,7 +323,11 @@
       "required": false,
       "types": [
         {
-          "type": "top_level_idea",
+          "type": "country_idea_block",
+          "named": true
+        },
+        {
+          "type": "law_idea_block",
           "named": true
         }
       ]
@@ -239,6 +365,56 @@
     "type": "ledger",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "limit_effect_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "dynamic_modifier_effect",
+          "named": true
+        },
+        {
+          "type": "limit_trigger_bloc",
+          "named": true
+        },
+        {
+          "type": "log_effect",
+          "named": true
+        },
+        {
+          "type": "scope_change",
+          "named": true
+        },
+        {
+          "type": "scripted_effect",
+          "named": true
+        },
+        {
+          "type": "variable_math_effect",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "limit_trigger_bloc",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "trigger_block",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "log_effect",
@@ -344,6 +520,25 @@
     }
   },
   {
+    "type": "scope_change",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "limit_effect_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "scripted_effect",
     "named": true,
     "fields": {},
@@ -359,7 +554,7 @@
     }
   },
   {
-    "type": "set_variable",
+    "type": "translation_unit",
     "named": true,
     "fields": {},
     "children": {
@@ -367,87 +562,11 @@
       "required": true,
       "types": [
         {
-          "type": "set_variable_long",
+          "type": "function_declarations",
           "named": true
         },
         {
-          "type": "set_variable_short",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "set_variable_long",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "set_variable_short",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "top_level_idea",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "country_idea_block",
-          "named": true
-        },
-        {
-          "type": "law_idea_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "trigger",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "number",
+          "type": "ideas_declaration",
           "named": true
         }
       ]
@@ -462,7 +581,68 @@
       "required": false,
       "types": [
         {
-          "type": "trigger",
+          "type": "check_variable",
+          "named": true
+        },
+        {
+          "type": "comp_trigger",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable_math_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "variable_math_effect_long",
+          "named": true
+        },
+        {
+          "type": "variable_math_effect_short",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable_math_effect_long",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable_math_effect_short",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         }
       ]
@@ -478,6 +658,18 @@
   },
   {
     "type": ">",
+    "named": false
+  },
+  {
+    "type": "add_dynamic_modifier",
+    "named": false
+  },
+  {
+    "type": "add_to_temp_variable",
+    "named": false
+  },
+  {
+    "type": "add_to_variable",
     "named": false
   },
   {
@@ -501,6 +693,10 @@
     "named": false
   },
   {
+    "type": "check_variable",
+    "named": false
+  },
+  {
     "type": "civilian",
     "named": false
   },
@@ -509,11 +705,39 @@
     "named": true
   },
   {
+    "type": "compare",
+    "named": false
+  },
+  {
     "type": "country",
     "named": false
   },
   {
+    "type": "days",
+    "named": false
+  },
+  {
     "type": "default",
+    "named": false
+  },
+  {
+    "type": "divide_temp_variable",
+    "named": false
+  },
+  {
+    "type": "divide_variable",
+    "named": false
+  },
+  {
+    "type": "equals",
+    "named": false
+  },
+  {
+    "type": "greater_than",
+    "named": false
+  },
+  {
+    "type": "greater_than_or_equals",
     "named": false
   },
   {
@@ -533,6 +757,18 @@
     "named": false
   },
   {
+    "type": "less_than",
+    "named": false
+  },
+  {
+    "type": "less_than_or_equals",
+    "named": false
+  },
+  {
+    "type": "limit",
+    "named": false
+  },
+  {
     "type": "log",
     "named": false
   },
@@ -541,7 +777,19 @@
     "named": false
   },
   {
+    "type": "modulo_temp_variable",
+    "named": false
+  },
+  {
+    "type": "modulo_variable",
+    "named": false
+  },
+  {
     "type": "no",
+    "named": false
+  },
+  {
+    "type": "not_equals",
     "named": false
   },
   {
@@ -561,7 +809,27 @@
     "named": false
   },
   {
+    "type": "remove_dynamic_modifier",
+    "named": false
+  },
+  {
+    "type": "scope",
+    "named": false
+  },
+  {
+    "type": "set_temp_variable",
+    "named": false
+  },
+  {
     "type": "set_variable",
+    "named": false
+  },
+  {
+    "type": "subtract_from_temp_variable",
+    "named": false
+  },
+  {
+    "type": "subtract_from_variable",
     "named": false
   },
   {
