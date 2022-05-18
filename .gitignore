@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# files for testing stuff
+#/Hoi4/*
