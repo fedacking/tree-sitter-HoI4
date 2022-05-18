@@ -1,0 +1,871 @@
+### TNO Laws
+### Economic Laws
+### ALL LAW EFFECTS MOVED TO DYNAMIC MODIFIERS
+ideas = {
+
+	tno_trade_laws = {
+		law = yes
+		tno_trade_laws_not_applicable = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_trade_laws_not_applicable"
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor = 0 }
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard = 0 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate = 0 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_trade_laws_free_trade = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_trade_laws_free_trade"
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor_max = 0.15 }
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor_min = -0.05 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory_max = 0.15 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory_min = -0.05 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard_max = 0.15 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard_min = -0.05 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor_max = 0.10 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor_min = -0.05 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate_max = 0.25 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate_min = -0.25 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier_max = 0.10 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier_min = 0 }
+				set_variable = { tno_modifier_trade_laws_drift_defence_factor_max = 0 }
+				set_variable = { tno_modifier_trade_laws_drift_defence_factor_min = 0 }
+				set_variable = { tno_modifier_trade_laws_agriculture_monthly_rate_max = 0 }
+				set_variable = { tno_modifier_trade_laws_agriculture_monthly_rate_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_trade_laws_export_focus = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_trade_laws_export_focus"
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor_max = 0.10 }
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor_min = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory_max = 0.10 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory_min = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard_max = 0.10 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard_min = 0 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor_max = 0.05 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor_min = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate_max = 0.25 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate_min = 0 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier_max = 0.05 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier_min = 0 }
+				set_variable = { tno_modifier_trade_laws_drift_defence_factor_max = 0 }
+				set_variable = { tno_modifier_trade_laws_drift_defence_factor_min = 0 }
+				set_variable = { tno_modifier_trade_laws_agriculture_monthly_rate_max = 0 }
+				set_variable = { tno_modifier_trade_laws_agriculture_monthly_rate_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_trade_laws_limited_exports = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_trade_laws_limited_exports"
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor_max = 0.05 }
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor_min = 0.025 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory_max = 0.05 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory_min = 0.025 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard_max = 0.05 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard_min = 0.025 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor_max = 0.025 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor_min = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate_max = 0.5 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate_min = 0.1 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier_max = 0.10 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier_min = 0 }
+				set_variable = { tno_modifier_trade_laws_drift_defence_factor_max = 0 }
+				set_variable = { tno_modifier_trade_laws_drift_defence_factor_min = 0 }
+				set_variable = { tno_modifier_trade_laws_agriculture_monthly_rate_max = 0 }
+				set_variable = { tno_modifier_trade_laws_agriculture_monthly_rate_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_trade_laws_closed_economy = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_trade_laws_closed_economy"
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor_max = 0 }
+				set_variable = { tno_modifier_trade_laws_production_speed_buildings_factor_min = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory_max = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_factory_min = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard_max = 0 }
+				set_variable = { tno_modifier_trade_laws_industrial_capacity_dockyard_min = 0 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor_max = 0 }
+				set_variable = { tno_modifier_trade_laws_research_speed_factor_min = -0.10 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate_max = 0.5 }
+				set_variable = { tno_modifier_trade_laws_industrial_expertise_monthly_rate_min = -0.5 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier_max = -0.20 }
+				set_variable = { tno_modifier_trade_laws_consumer_goods_trade_desire_modifier_min = 0 }
+				set_variable = { tno_modifier_trade_laws_drift_defence_factor_max = 0.10 }
+				set_variable = { tno_modifier_trade_laws_drift_defence_factor_min = -0.10 }
+				set_variable = { tno_modifier_trade_laws_agriculture_monthly_rate_max = 0.5 }
+				set_variable = { tno_modifier_trade_laws_agriculture_monthly_rate_min = -0.5 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {
+				# min_export = 0
+			}
+			cancel_if_invalid = no
+		}
+	}
+	tno_income_taxation = {
+		law = yes
+		tno_income_taxation_not_applicable = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_income_taxation_not_applicable"
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_max = 0 }
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_min = 0 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_max = 0 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_min = 0 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_max = 0 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_min = 0 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_max = 0 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+			#cancel = { econ_can_use_economy_system = yes }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_income_taxation_elite_tax_exemptions = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_income_taxation_elite_tax_exemptions"
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_max = 0.30 }
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_min = 0.20 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_max = -0.25 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_min = -0.3 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_max = 0 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_min = 0 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_max = -0.05 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_min = -0.025 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+			#cancel = { NOT = { econ_can_use_economy_system = yes } }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_income_taxation_tax_havens = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_income_taxation_tax_havens"
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_max = 0.20 }
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_min = 0.10 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_max = -0.15 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_min = -0.2 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_max = 0 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_min = 0 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_max = -0.025 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_min = -0.01 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+			#cancel = { NOT = { econ_can_use_economy_system = yes } }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_income_taxation_low_income_weighted = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_income_taxation_low_income_weighted"
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_max = 0.10 }
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_min = 0 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_max = -0.05 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_min = -0.1 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_max = 0.05 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_min = 0 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_max = 0 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+			#cancel = { NOT = { econ_can_use_economy_system = yes } }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_income_taxation_flat_taxes = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_income_taxation_flat_taxes"
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_max = 0 }
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_min = 0 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_max = 0.05 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_min = 0 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_max = 0.10 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_min = 0 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_max = 0.025 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_min = 0.05 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+			#cancel = { NOT = { econ_can_use_economy_system = yes } }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_income_taxation_high_income_weighted = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_income_taxation_high_income_weighted"
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_max = 0 }
+				set_variable = { tno_modifier_income_taxation_poverty_taxation_rate_min = 0 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_max = 0.2 }
+				set_variable = { tno_modifier_income_taxation_political_power_gain_min = 0.1 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_max = 0.15 }
+				set_variable = { tno_modifier_income_taxation_stability_factor_min = 0.05 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_max = 0.05 }
+				set_variable = { tno_modifier_income_taxation_consumer_goods_use_modifier_min = 0.075 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+			#cancel = { NOT = { econ_can_use_economy_system = yes } }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+	}
+	tno_minimum_wage = {
+		law = yes
+		tno_minimum_wage_not_applicable = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_minimum_wage_not_applicable"
+				set_variable = { tno_modifier_minimum_wage_stability_factor_max = 0 }
+				set_variable = { tno_modifier_minimum_wage_stability_factor_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_global_building_slots_factor_max = 0 }
+				set_variable = { tno_modifier_minimum_wage_global_building_slots_factor_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_max = 0 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_max = 0 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_max = 0 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_max = 0 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_minimum_wage_no_minimum_wage = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_minimum_wage_no_minimum_wage"
+				set_variable = { tno_modifier_minimum_wage_stability_factor_max = -0.05 }
+				set_variable = { tno_modifier_minimum_wage_stability_factor_min = -0.10 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_max = 0.05 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_min = 0.025 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_max = -0.01 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_min = -0.03 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_max = -0.25 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_min = -0.5 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_max = -0.05}
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_min = -0.025 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_minimum_wage_trinket_minimum_wage = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_minimum_wage_trinket_minimum_wage"
+				set_variable = { tno_modifier_minimum_wage_stability_factor_max = -0.025 }
+				set_variable = { tno_modifier_minimum_wage_stability_factor_min = -0.05 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_max = 0.025 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_max = 0 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_min = -0.02 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_max = -0.1 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_min = -0.25 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_max = -0.025 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_min = -0.01}
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_minimum_wage_low_minimum_wage = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_minimum_wage_low_minimum_wage"
+				set_variable = { tno_modifier_minimum_wage_stability_factor_max = 0.01 }
+				set_variable = { tno_modifier_minimum_wage_stability_factor_min = -0.01 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_max = 0.01 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_min = -0.01 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_max = 0.1 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_min = -0.1 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_max = 0.1 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_min = -0.1 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_max = 0 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {
+
+			}
+			cancel_if_invalid = no
+		}
+		tno_minimum_wage_acceptable_minimum = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_minimum_wage_acceptable_minimum"
+				set_variable = { tno_modifier_minimum_wage_stability_factor_max = 0.025 }
+				set_variable = { tno_modifier_minimum_wage_stability_factor_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_max = -0.025 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_min = -0.05 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_max = 0.02 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_max = 0.25 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_min = 0 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_max = 0.025 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_min = 0.035 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_minimum_wage_good_minimum_wage = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_minimum_wage_good_minimum_wage"
+				set_variable = { tno_modifier_minimum_wage_stability_factor_max = 0.05 }
+				set_variable = { tno_modifier_minimum_wage_stability_factor_min = 0.025 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_max = -0.05 }
+				set_variable = { tno_modifier_minimum_wage_production_factory_max_efficiency_factor_min = -0.10 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_max = 0.03 }
+				set_variable = { tno_modifier_minimum_wage_poverty_monthly_rate_min = 0.01 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_max = 0.5 }
+				set_variable = { tno_modifier_minimum_wage_industrial_expertise_monthly_rate_min = 0.25 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_max = 0.05 }
+				set_variable = { tno_modifier_minimum_wage_consumer_goods_use_modifier_min = 0.075 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+	}
+	tno_max_workhours = {
+		law = yes
+		tno_max_workhours_not_applicable = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_max_workhours_not_applicable"
+				set_variable = { tno_modifier_max_workhours_stability_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_stability_factor_min = 0 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_min = 0 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_max = 0 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_min = 0 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_max = 0 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_min = 0 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_max = 0 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_min = 0 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_min = 0 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_max_workhours_unlimited_work_day = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_max_workhours_unlimited_work_day"
+				set_variable = { tno_modifier_max_workhours_stability_factor_max = -0.05 }
+				set_variable = { tno_modifier_max_workhours_stability_factor_min = -0.10 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_max = -0.15 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_min = -0.20 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_max = 0.10 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_min = 0.05 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_max = 0.10 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_min = 0.05 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_max = -0.05 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_min = -0.025 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_max = 0.025 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_min = 0.01 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_max = -0.025 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_min = -0.05 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_max_workhours_14_hour_work_day = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_max_workhours_14_hour_work_day"
+				set_variable = { tno_modifier_max_workhours_stability_factor_max = -0.025 }
+				set_variable = { tno_modifier_max_workhours_stability_factor_min = -0.05 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_max = -0.075 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_min = -0.10 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_max = 0.05 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_min = 0.025 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_max = 0.05 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_min = 0.025 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_max = -0.025 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_min = -0.01 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_max = 0.01 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_min = 0 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_max_workhours_12_hour_work_day = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_max_workhours_12_hour_work_day"
+				set_variable = { tno_modifier_max_workhours_stability_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_stability_factor_min = 0 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_max = 0.025 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_min = 0.01 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_max = 0.025 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_min = 0.01 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_max = 0.025 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_min = 0.01 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_max = -0.01 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_min = 0 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_min = 0 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {
+
+			}
+			cancel_if_invalid = no
+		}
+		tno_max_workhours_10_hour_work_day = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_max_workhours_10_hour_work_day"
+				set_variable = { tno_modifier_max_workhours_stability_factor_max = 0.025 }
+				set_variable = { tno_modifier_max_workhours_stability_factor_min = 0.01 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_max = 0.10 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_min = 0.05 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_max = -0.05 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_min = -0.075 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_max = -0.05 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_min = -0.075 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_max = 0.01 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_min = 0.02 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_max = -0.01 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_min = -0.02 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_max_workhours_8_hour_work_day = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_max_workhours_8_hour_work_day"
+				set_variable = { tno_modifier_max_workhours_stability_factor_max = 0.05 }
+				set_variable = { tno_modifier_max_workhours_stability_factor_min = 0.025 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_max = 0.20 }
+				set_variable = { tno_modifier_max_workhours_production_factory_efficiency_gain_factor_min = 0.10 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_max = -0.10 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_factory_min = -0.15 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_max = -0.10 }
+				set_variable = { tno_modifier_max_workhours_industrial_capacity_dockyard_min = -0.15 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_max = 0.025 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_use_modifier_min = 0.03}
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_max = -0.025 }
+				set_variable = { tno_modifier_max_workhours_consumer_goods_production_factor_min = -0.05 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_max = 0 }
+				set_variable = { tno_modifier_max_workhours_research_speed_factor_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+	}
+	tno_child_labor = {
+		law = yes
+		tno_child_labor_legal = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_child_labor_legal"
+				set_variable = { tno_modifier_child_labor_taxable_population_modifier_max = 0.04 }
+				set_variable = { tno_modifier_child_labor_taxable_population_modifier_min = 0 }
+				set_variable = { tno_modifier_child_labor_production_speed_buildings_factor_max = 0.05 }
+				set_variable = { tno_modifier_child_labor_production_speed_buildings_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_stability_factor_max = -0.10 }
+				set_variable = { tno_modifier_child_labor_stability_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_research_speed_factor_max = -0.075 }
+				set_variable = { tno_modifier_child_labor_research_speed_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_monthly_population_factor_max = -0.20 }
+				set_variable = { tno_modifier_child_labor_monthly_population_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_industrial_capacity_factory_max = 0.10 }
+				set_variable = { tno_modifier_child_labor_industrial_capacity_factory_min = 0 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_use_modifier_max = -0.01 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_use_modifier_min = 0 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_production_factor_max = 0.01 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_production_factor_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_child_labor_restricted = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_child_labor_restricted"
+				set_variable = { tno_modifier_child_labor_taxable_population_modifier_max = 0.02 }
+				set_variable = { tno_modifier_child_labor_taxable_population_modifier_min = 0 }
+				set_variable = { tno_modifier_child_labor_production_speed_buildings_factor_max = 0.025 }
+				set_variable = { tno_modifier_child_labor_production_speed_buildings_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_stability_factor_max = -0.05 }
+				set_variable = { tno_modifier_child_labor_stability_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_research_speed_factor_max = -0.025 }
+				set_variable = { tno_modifier_child_labor_research_speed_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_monthly_population_factor_max = -0.10 }
+				set_variable = { tno_modifier_child_labor_monthly_population_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_industrial_capacity_factory_max = 0.05 }
+				set_variable = { tno_modifier_child_labor_industrial_capacity_factory_min = 0 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_use_modifier_max = -0.005 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_use_modifier_min = 0 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_production_factor_max = 0.005 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_production_factor_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_child_labor_illegal = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_child_labor_illegal"
+				set_variable = { tno_modifier_child_labor_taxable_population_modifier_max = 0 }
+				set_variable = { tno_modifier_child_labor_taxable_population_modifier_min = 0 }
+				set_variable = { tno_modifier_child_labor_production_speed_buildings_factor_max = 0 }
+				set_variable = { tno_modifier_child_labor_production_speed_buildings_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_stability_factor_max = 0 }
+				set_variable = { tno_modifier_child_labor_stability_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_research_speed_factor_max = 0 }
+				set_variable = { tno_modifier_child_labor_research_speed_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_monthly_population_factor_max = 0 }
+				set_variable = { tno_modifier_child_labor_monthly_population_factor_min = 0 }
+				set_variable = { tno_modifier_child_labor_industrial_capacity_factory_max = 0 }
+				set_variable = { tno_modifier_child_labor_industrial_capacity_factory_min = 0 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_use_modifier_max = 0 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_use_modifier_min = 0 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_production_factor_max = 0 }
+				set_variable = { tno_modifier_child_labor_consumer_goods_production_factor_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {}
+			cancel_if_invalid = no
+		}
+	}
+	tno_pensions = {
+		law = yes
+		tno_pensions_no_pensions = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_pensions_no_pensions"
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_max = 0.001 }
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_min = 0.001 }
+				set_variable = { tno_modifier_pensions_stability_factor_max = -0.05 }
+				set_variable = { tno_modifier_pensions_stability_factor_min = -0.075 }
+				set_variable = { tno_modifier_pensions_poverty_monthly_rate_max = -0.01 }
+				set_variable = { tno_modifier_pensions_poverty_monthly_rate_min = -0.03 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_max = -0.05 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_min = -0.025 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_pensions_trinket_pensions = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_pensions_trinket_pensions"
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_max = 0.024 }
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_min = 0.028 }
+				set_variable = { tno_modifier_pensions_stability_factor_max = -0.025 }
+				set_variable = { tno_modifier_pensions_stability_factor_min = -0.05 }
+				set_variable = { tno_modifier_pensions_poverty_monthly_rate_max = 0 }
+				set_variable = { tno_modifier_pensions_poverty_monthly_rate_min = -0.01 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_max = -0.025 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_pensions_low_pensions = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_pensions_low_pensions"
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_max = 0.044 }
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_min = 0.048 }
+				set_variable = { tno_modifier_pensions_stability_factor_max = 0 }
+				set_variable = { tno_modifier_pensions_stability_factor_min = -0.025 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_max = -0.01 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_pensions_acceptable_pensions = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_pensions_acceptable_pensions"
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_max = 0.076 }
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_min = 0.080 }
+				set_variable = { tno_modifier_pensions_stability_factor_max = 0.05 }
+				set_variable = { tno_modifier_pensions_stability_factor_min = 0.025 }
+				set_variable = { tno_modifier_pensions_poverty_monthly_rate_max = 0.01 }
+				set_variable = { tno_modifier_pensions_poverty_monthly_rate_min = 0 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_max = 0 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_min = 0.025 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_pensions_good_pensions = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_pensions_good_pensions"
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_max = 0.108 }
+				set_variable = { tno_modifier_pensions_proportional_pop_cost_min = 0.120 }
+				set_variable = { tno_modifier_pensions_stability_factor_max = 0.05 }
+				set_variable = { tno_modifier_pensions_stability_factor_min = 0.025 }
+				set_variable = { tno_modifier_pensions_poverty_monthly_rate_max = 0.03 }
+				set_variable = { tno_modifier_pensions_poverty_monthly_rate_min = 0.01 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_max = 0.025 }
+				set_variable = { tno_modifier_pensions_consumer_goods_use_modifier_min = 0.05 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+	}
+	tno_unemployment = {
+		law = yes
+		tno_unemployment_no_subsidies = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_unemployment_no_subsidies"
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_max = 0.001 }
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_min = 0.001 }
+				set_variable = { tno_modifier_unemployment_stability_factor_max = -0.075 }
+				set_variable = { tno_modifier_unemployment_stability_factor_min = -0.10}
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_max = -0.02 }
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_min = -0.04 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_max = -0.025 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			default = yes
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_unemployment_trinket_subsidies = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_unemployment_trinket_subsidies"
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_max = 0.016 }
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_min = 0.020 }
+				set_variable = { tno_modifier_unemployment_stability_factor_max = -0.025 }
+				set_variable = { tno_modifier_unemployment_stability_factor_min = -0.05}
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_max = 0.01 }
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_min = -0.01 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_max = -0.01 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_min = 0.01 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_unemployment_low_subsidies = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_unemployment_low_subsidies"
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_max = 0.041 }
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_min = 0.045 }
+				set_variable = { tno_modifier_unemployment_stability_factor_max = 0.01 }
+				set_variable = { tno_modifier_unemployment_stability_factor_min = -0.01 }
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_max = 0.01 }
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_min = 0 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_max = 0 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_min = 0 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_unemployment_generous_subsidies = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_unemployment_generous_subsidies"
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_max = 0.095 }
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_min = 0.100 }
+				set_variable = { tno_modifier_unemployment_stability_factor_max = 0.025 }
+				set_variable = { tno_modifier_unemployment_stability_factor_min = 0 }
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_max = 0.02 }
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_min = 0 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_max = 0.01 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_min = 0.025 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+		tno_unemployment_basic_income = {
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea tno_unemployment_basic_income"
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_max = 0.124 }
+				set_variable = { tno_modifier_unemployment_proportional_pop_cost_min = 0.148 }
+				set_variable = { tno_modifier_unemployment_stability_factor_max = 0.10 }
+				set_variable = { tno_modifier_unemployment_stability_factor_min = 0.05 }
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_max = 0.05 }
+				set_variable = { tno_modifier_unemployment_poverty_monthly_rate_min = 0.02 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_max = 0.025 }
+				set_variable = { tno_modifier_unemployment_consumer_goods_use_modifier_min = 0.05 }
+				TNO_update_policy_effectiveness = yes
+			}
+			available = { always = no }
+
+			removal_cost = -1
+			ledger = civilian
+			modifier = {  }
+			cancel_if_invalid = no
+		}
+	}
+}

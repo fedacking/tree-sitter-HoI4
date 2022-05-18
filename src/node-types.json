@@ -1,0 +1,587 @@
+[
+  {
+    "type": "allowed",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "trigger_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "allowed_civil_war",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "trigger_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "available",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "trigger_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cancel",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "trigger_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cancel_if_invalid",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "country_idea_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "mid_level_idea",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "default",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "log_effect",
+          "named": true
+        },
+        {
+          "type": "scripted_effect",
+          "named": true
+        },
+        {
+          "type": "set_variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "effect_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "effect",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "idea_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "allowed",
+          "named": true
+        },
+        {
+          "type": "allowed_civil_war",
+          "named": true
+        },
+        {
+          "type": "available",
+          "named": true
+        },
+        {
+          "type": "cancel",
+          "named": true
+        },
+        {
+          "type": "cancel_if_invalid",
+          "named": true
+        },
+        {
+          "type": "default",
+          "named": true
+        },
+        {
+          "type": "idea_modifiers",
+          "named": true
+        },
+        {
+          "type": "ledger",
+          "named": true
+        },
+        {
+          "type": "on_add",
+          "named": true
+        },
+        {
+          "type": "picture",
+          "named": true
+        },
+        {
+          "type": "removal_cost",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "idea_modifiers",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "modifier_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ideas_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "top_level_idea",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "law_idea_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "law_yes",
+          "named": true
+        },
+        {
+          "type": "mid_level_idea",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "law_yes",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ledger",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "log_effect",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "mid_level_idea",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "idea_content",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "modifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "modifier_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "on_add",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "effect_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "picture",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "removal_cost",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scripted_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_variable",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "set_variable_long",
+          "named": true
+        },
+        {
+          "type": "set_variable_short",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_variable_long",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_variable_short",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "top_level_idea",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "country_idea_block",
+          "named": true
+        },
+        {
+          "type": "law_idea_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "trigger",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "trigger_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "trigger",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": "allowed",
+    "named": false
+  },
+  {
+    "type": "allowed_civil_war",
+    "named": false
+  },
+  {
+    "type": "available",
+    "named": false
+  },
+  {
+    "type": "cancel",
+    "named": false
+  },
+  {
+    "type": "cancel_if_invalid",
+    "named": false
+  },
+  {
+    "type": "civilian",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "country",
+    "named": false
+  },
+  {
+    "type": "default",
+    "named": false
+  },
+  {
+    "type": "ideas",
+    "named": false
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "law",
+    "named": false
+  },
+  {
+    "type": "ledger",
+    "named": false
+  },
+  {
+    "type": "log",
+    "named": false
+  },
+  {
+    "type": "modifier",
+    "named": false
+  },
+  {
+    "type": "no",
+    "named": false
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "on_add",
+    "named": false
+  },
+  {
+    "type": "picture",
+    "named": false
+  },
+  {
+    "type": "removal_cost",
+    "named": false
+  },
+  {
+    "type": "set_variable",
+    "named": false
+  },
+  {
+    "type": "value",
+    "named": false
+  },
+  {
+    "type": "var",
+    "named": false
+  },
+  {
+    "type": "yes",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]
