@@ -315,6 +315,10 @@ module.exports = grammar({
                 'modulo_temp_variable'
             ),
             "=",
+            $.variable_math_block
+        ),
+
+        variable_math_block: $ => seq(
             "{",
             choice(
                 $.variable_math_effect_long,
