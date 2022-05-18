@@ -218,6 +218,11 @@ module.exports = grammar({
                 'equals',
                 'not_equals',
             ),
+			optional(
+				'tooltip',
+				'=',
+				$.identifier
+			)
         ),
 
         check_variable_short: $ => seq(
