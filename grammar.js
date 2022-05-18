@@ -46,6 +46,10 @@ module.exports = grammar({
         mid_level_idea: $ => seq(
             $.identifier,
             '=',
+            $.idea_content
+        ),
+
+        idea_content: $ => seq(
             '{',
             repeat($._idea_content),
             '}'
