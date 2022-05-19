@@ -1,5 +1,58 @@
 [
   {
+    "type": "array_math_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "array_math_effect_long",
+          "named": true
+        },
+        {
+          "type": "math_effect_short",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "array_math_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "array_math_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "array_math_effect_long",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "cancel_if_invalid",
     "named": true,
     "fields": {}
@@ -60,6 +113,55 @@
         },
         {
           "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "clamp_variable_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "clamp_variable_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "clamp_variable_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "clear_array",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -147,6 +249,18 @@
       "required": false,
       "types": [
         {
+          "type": "array_math_effect",
+          "named": true
+        },
+        {
+          "type": "clamp_variable_effect",
+          "named": true
+        },
+        {
+          "type": "clear_array",
+          "named": true
+        },
+        {
           "type": "dynamic_modifier_effect",
           "named": true
         },
@@ -178,7 +292,23 @@
       "required": false,
       "types": [
         {
+          "type": "array_math_effect",
+          "named": true
+        },
+        {
+          "type": "clamp_variable_effect",
+          "named": true
+        },
+        {
+          "type": "clear_array",
+          "named": true
+        },
+        {
           "type": "dynamic_modifier_effect",
+          "named": true
+        },
+        {
+          "type": "for_loop_limits",
           "named": true
         },
         {
@@ -199,6 +329,25 @@
         },
         {
           "type": "variable_math_effect",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_loop_limits",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         }
       ]
@@ -384,14 +533,28 @@
     }
   },
   {
-    "type": "loc_key",
+    "type": "log_effect",
     "named": true,
     "fields": {}
   },
   {
-    "type": "log_effect",
+    "type": "math_effect_short",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "mid_level_idea",
@@ -618,6 +781,25 @@
     }
   },
   {
+    "type": "variable_math_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "math_effect_short",
+          "named": true
+        },
+        {
+          "type": "variable_math_effect_long",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "variable_math_effect",
     "named": true,
     "fields": {},
@@ -626,11 +808,7 @@
       "required": true,
       "types": [
         {
-          "type": "variable_math_effect_long",
-          "named": true
-        },
-        {
-          "type": "variable_math_effect_short",
+          "type": "variable_math_block",
           "named": true
         }
       ]
@@ -638,25 +816,6 @@
   },
   {
     "type": "variable_math_effect_long",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "variable_math_effect_short",
     "named": true,
     "fields": {},
     "children": {
@@ -691,6 +850,14 @@
     "named": false
   },
   {
+    "type": "add_to_array",
+    "named": false
+  },
+  {
+    "type": "add_to_temp_array",
+    "named": false
+  },
+  {
     "type": "add_to_temp_variable",
     "named": false
   },
@@ -711,7 +878,15 @@
     "named": false
   },
   {
+    "type": "array",
+    "named": false
+  },
+  {
     "type": "available",
+    "named": false
+  },
+  {
+    "type": "break",
     "named": false
   },
   {
@@ -728,6 +903,22 @@
   },
   {
     "type": "civilian",
+    "named": false
+  },
+  {
+    "type": "clamp_temp_variable",
+    "named": false
+  },
+  {
+    "type": "clamp_variable",
+    "named": false
+  },
+  {
+    "type": "clear_array",
+    "named": false
+  },
+  {
+    "type": "clear_temp_array",
     "named": false
   },
   {
@@ -763,7 +954,19 @@
     "named": false
   },
   {
+    "type": "end",
+    "named": false
+  },
+  {
     "type": "equals",
+    "named": false
+  },
+  {
+    "type": "find_highest_in_array",
+    "named": false
+  },
+  {
+    "type": "find_lowest_in_array",
     "named": false
   },
   {
@@ -776,6 +979,10 @@
   },
   {
     "type": "ideas",
+    "named": false
+  },
+  {
+    "type": "index",
     "named": false
   },
   {
@@ -799,7 +1006,19 @@
     "named": false
   },
   {
+    "type": "loc_key",
+    "named": true
+  },
+  {
     "type": "log",
+    "named": false
+  },
+  {
+    "type": "max",
+    "named": false
+  },
+  {
+    "type": "min",
     "named": false
   },
   {
@@ -812,6 +1031,14 @@
   },
   {
     "type": "modulo_variable",
+    "named": false
+  },
+  {
+    "type": "multiply_temp_variable",
+    "named": false
+  },
+  {
+    "type": "multiply_variable",
     "named": false
   },
   {
@@ -843,6 +1070,22 @@
     "named": false
   },
   {
+    "type": "remove_from_array",
+    "named": false
+  },
+  {
+    "type": "remove_from_temp_array",
+    "named": false
+  },
+  {
+    "type": "resize_array",
+    "named": false
+  },
+  {
+    "type": "resize_temp_array",
+    "named": false
+  },
+  {
     "type": "scope",
     "named": false
   },
@@ -852,6 +1095,10 @@
   },
   {
     "type": "set_variable",
+    "named": false
+  },
+  {
+    "type": "start",
     "named": false
   },
   {

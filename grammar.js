@@ -284,9 +284,12 @@ module.exports = grammar({
 
             // Variable Math
             $.variable_math_effect,
+            $.array_math_effect,
+            $.clamp_variable_effect,
 
             // Unique stuff
-            $.dynamic_modifier_effect
+            $.dynamic_modifier_effect,
+            $.clear_array
         ),
 
         log_effect: $ => seq(
@@ -305,12 +308,14 @@ module.exports = grammar({
                 'set_variable',
                 'add_to_variable',
                 'subtract_from_variable',
+                'multiply_variable',
                 'divide_variable',
                 'modulo_variable',
                 // Temp
                 'set_temp_variable',
                 'add_to_temp_variable',
                 'subtract_from_temp_variable',
+                'multiply_temp_variable',
                 'divide_temp_variable',
                 'modulo_temp_variable'
             ),
@@ -318,11 +323,70 @@ module.exports = grammar({
             $.variable_math_block
         ),
 
+        array_math_effect: $ => seq(
+            choice(
+                // Normal
+                'add_to_array',
+                'remove_from_array',
+                'resize_array',
+                'find_highest_in_array',
+                'find_lowest_in_array',
+                // Temp
+                'add_to_temp_array',
+                'remove_from_temp_array',
+                'resize_temp_array',
+            ),
+            "=",
+            $.array_math_block
+        ),
+
+        clamp_variable_effect: $ => seq(
+            choice(
+                "clamp_variable",
+                "clamp_temp_variable"
+            ),
+            '=',
+            $.clamp_variable_block
+        ),
+
+        clamp_variable_block: $ => seq(
+            "{",
+            'var',
+            '=',
+            $.identifier,
+            optional(seq(
+                'min',
+                '=',
+                choice(
+                    $.identifier,
+                    $.number
+                )
+            )),
+            optional(seq(
+                'max',
+                '=',
+                choice(
+                    $.identifier,
+                    $.number
+                )
+            )),
+            "}"
+        ),
+
         variable_math_block: $ => seq(
             "{",
             choice(
                 $.variable_math_effect_long,
-                $.variable_math_effect_short
+                $.math_effect_short
+            ),
+            "}"
+        ),
+
+        array_math_block: $ => seq(
+            "{",
+            choice(
+                $.array_math_effect_long,
+                $.math_effect_short
             ),
             "}"
         ),
@@ -350,7 +414,16 @@ module.exports = grammar({
             '}'
         ),
 
-        variable_math_effect_short: $ => seq(
+        clear_array: $ => seq(
+            choice(
+                'clear_array',
+                'clear_temp_array'
+            ),
+            '=',
+            $.identifier
+        ),
+
+        math_effect_short: $ => seq(
             $.identifier,
             "=",
             choice(
@@ -371,6 +444,26 @@ module.exports = grammar({
             ),
         ),
 
+        array_math_effect_long: $ => seq(
+            "array",
+            "=",
+            $.identifier,
+            "value",
+            "=",
+            choice(
+                $.identifier,
+                $.number
+            ),
+            optional(seq(
+                'index',
+                '=',
+                choice(
+                    $.identifier,
+                    $.number
+                ),
+            ))
+        ),
+
         scripted_effect: $ => seq(
             $.identifier,
             "=",
@@ -385,9 +478,26 @@ module.exports = grammar({
 
         effect_limit_block: $ => seq(
             '{',
+            repeat($.for_loop_limits),
             optional($.limit_trigger_block),
             repeat($._effect),
             '}'
+        ),
+
+        for_loop_limits: $ => seq(
+            choice(
+                'start',
+                'end',
+                'value',
+                'array',
+                'break',
+                'index',
+            ),
+            '=',
+            choice(
+                $.identifier,
+                $.number
+            )
         ),
 
         limit_trigger_block: $ => seq(
@@ -408,7 +518,11 @@ module.exports = grammar({
             )
         )),
 
-        identifier: $ => /[a-zA-Z_]\w*/,
+        identifier: $ => choice(
+            /modifier@\w*/,
+            /[a-zA-Z_]\w*\^?\w*/,
+        ),
+
         loc_key: $ => /[a-zA-Z_]\w*/,
 
         comment: $ => token(
