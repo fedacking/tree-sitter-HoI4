@@ -58,6 +58,218 @@
     "fields": {}
   },
   {
+    "type": "character",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "character_advisor",
+          "named": true
+        },
+        {
+          "type": "character_commander",
+          "named": true
+        },
+        {
+          "type": "character_country_leader",
+          "named": true
+        },
+        {
+          "type": "character_name",
+          "named": true
+        },
+        {
+          "type": "character_portraits",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "character_advisor",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "cancel_if_invalid",
+          "named": true
+        },
+        {
+          "type": "cost",
+          "named": true
+        },
+        {
+          "type": "default",
+          "named": true
+        },
+        {
+          "type": "idea_advisor_content",
+          "named": true
+        },
+        {
+          "type": "idea_content_trigger",
+          "named": true
+        },
+        {
+          "type": "idea_modifiers",
+          "named": true
+        },
+        {
+          "type": "ledger",
+          "named": true
+        },
+        {
+          "type": "on_add",
+          "named": true
+        },
+        {
+          "type": "picture",
+          "named": true
+        },
+        {
+          "type": "traits",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "character_commander",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "id",
+          "named": true
+        },
+        {
+          "type": "skill",
+          "named": true
+        },
+        {
+          "type": "traits",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "character_country_leader",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "desc",
+          "named": true
+        },
+        {
+          "type": "expire",
+          "named": true
+        },
+        {
+          "type": "id",
+          "named": true
+        },
+        {
+          "type": "ideology",
+          "named": true
+        },
+        {
+          "type": "traits",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "character_declarations",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "character",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "character_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "loc_key",
+          "named": true
+        },
+        {
+          "type": "loc_key_enclosed",
+          "named": true
+        },
+        {
+          "type": "loc_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "character_portrait",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "gfx_key",
+          "named": true
+        },
+        {
+          "type": "gfx_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "character_portraits",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "character_portrait",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "check_variable",
     "named": true,
     "fields": {},
@@ -90,6 +302,14 @@
         },
         {
           "type": "loc_key",
+          "named": true
+        },
+        {
+          "type": "loc_key_enclosed",
+          "named": true
+        },
+        {
+          "type": "loc_string",
           "named": true
         },
         {
@@ -187,6 +407,21 @@
     }
   },
   {
+    "type": "cost",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "country_idea_block",
     "named": true,
     "fields": {},
@@ -212,14 +447,50 @@
         {
           "type": "loc_key",
           "named": true
+        },
+        {
+          "type": "loc_key_enclosed",
+          "named": true
+        },
+        {
+          "type": "loc_string",
+          "named": true
         }
       ]
     }
   },
   {
+    "type": "date",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "default",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "desc",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "loc_key",
+          "named": true
+        },
+        {
+          "type": "loc_key_enclosed",
+          "named": true
+        },
+        {
+          "type": "loc_string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "dynamic_modifier_effect",
@@ -335,6 +606,21 @@
     }
   },
   {
+    "type": "expire",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "for_loop_limits",
     "named": true,
     "fields": {},
@@ -388,6 +674,46 @@
     }
   },
   {
+    "type": "gfx_key",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "gfx_string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "id",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "idea_advisor_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "idea_content",
     "named": true,
     "fields": {},
@@ -397,6 +723,10 @@
       "types": [
         {
           "type": "cancel_if_invalid",
+          "named": true
+        },
+        {
+          "type": "cost",
           "named": true
         },
         {
@@ -421,10 +751,6 @@
         },
         {
           "type": "picture",
-          "named": true
-        },
-        {
-          "type": "removal_cost",
           "named": true
         }
       ]
@@ -461,7 +787,7 @@
     }
   },
   {
-    "type": "ideas_declaration",
+    "type": "ideas_declarations",
     "named": true,
     "fields": {},
     "children": {
@@ -483,6 +809,21 @@
     "type": "identifier",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "ideology",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "law_idea_block",
@@ -531,6 +872,31 @@
         }
       ]
     }
+  },
+  {
+    "type": "loc_key",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "loc_key_enclosed",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "loc_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "loc_string",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "log_effect",
@@ -644,21 +1010,6 @@
     }
   },
   {
-    "type": "removal_cost",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "scope_change",
     "named": true,
     "fields": {},
@@ -693,6 +1044,51 @@
     }
   },
   {
+    "type": "skill",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "traits",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "traits_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "traits_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "translation_unit",
     "named": true,
     "fields": {},
@@ -701,11 +1097,15 @@
       "required": true,
       "types": [
         {
+          "type": "character_declarations",
+          "named": true
+        },
+        {
           "type": "function_declarations",
           "named": true
         },
         {
-          "type": "ideas_declaration",
+          "type": "ideas_declarations",
           "named": true
         }
       ]
@@ -834,6 +1234,10 @@
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -866,7 +1270,15 @@
     "named": false
   },
   {
+    "type": "advisor",
+    "named": false
+  },
+  {
     "type": "ai_will_do",
+    "named": false
+  },
+  {
+    "type": "air",
     "named": false
   },
   {
@@ -878,7 +1290,15 @@
     "named": false
   },
   {
+    "type": "army",
+    "named": false
+  },
+  {
     "type": "array",
+    "named": false
+  },
+  {
+    "type": "attack_skill",
     "named": false
   },
   {
@@ -895,6 +1315,10 @@
   },
   {
     "type": "cancel_if_invalid",
+    "named": false
+  },
+  {
+    "type": "characters",
     "named": false
   },
   {
@@ -930,7 +1354,23 @@
     "named": false
   },
   {
+    "type": "coordination_skill",
+    "named": false
+  },
+  {
+    "type": "corps_commander",
+    "named": false
+  },
+  {
+    "type": "cost",
+    "named": false
+  },
+  {
     "type": "country",
+    "named": false
+  },
+  {
+    "type": "country_leader",
     "named": false
   },
   {
@@ -943,6 +1383,14 @@
   },
   {
     "type": "default",
+    "named": false
+  },
+  {
+    "type": "defense_skill",
+    "named": false
+  },
+  {
+    "type": "desc",
     "named": false
   },
   {
@@ -962,6 +1410,14 @@
     "named": false
   },
   {
+    "type": "expire",
+    "named": false
+  },
+  {
+    "type": "field_marshal",
+    "named": false
+  },
+  {
     "type": "find_highest_in_array",
     "named": false
   },
@@ -978,11 +1434,31 @@
     "named": false
   },
   {
+    "type": "hidden",
+    "named": false
+  },
+  {
+    "type": "id",
+    "named": false
+  },
+  {
+    "type": "idea_token",
+    "named": false
+  },
+  {
     "type": "ideas",
     "named": false
   },
   {
+    "type": "ideology",
+    "named": false
+  },
+  {
     "type": "index",
+    "named": false
+  },
+  {
+    "type": "large",
     "named": false
   },
   {
@@ -991,6 +1467,10 @@
   },
   {
     "type": "ledger",
+    "named": false
+  },
+  {
+    "type": "legacy_id",
     "named": false
   },
   {
@@ -1006,11 +1486,15 @@
     "named": false
   },
   {
-    "type": "loc_key",
-    "named": true
+    "type": "log",
+    "named": false
   },
   {
-    "type": "log",
+    "type": "logistics_skill",
+    "named": false
+  },
+  {
+    "type": "maneuvering_skill",
     "named": false
   },
   {
@@ -1042,6 +1526,18 @@
     "named": false
   },
   {
+    "type": "name",
+    "named": false
+  },
+  {
+    "type": "navy",
+    "named": false
+  },
+  {
+    "type": "navy_leader",
+    "named": false
+  },
+  {
     "type": "no",
     "named": false
   },
@@ -1059,6 +1555,14 @@
   },
   {
     "type": "picture",
+    "named": false
+  },
+  {
+    "type": "planning_skill",
+    "named": false
+  },
+  {
+    "type": "portraits",
     "named": false
   },
   {
@@ -1098,6 +1602,18 @@
     "named": false
   },
   {
+    "type": "skill",
+    "named": false
+  },
+  {
+    "type": "slot",
+    "named": false
+  },
+  {
+    "type": "small",
+    "named": false
+  },
+  {
     "type": "start",
     "named": false
   },
@@ -1111,6 +1627,10 @@
   },
   {
     "type": "tooltip",
+    "named": false
+  },
+  {
+    "type": "traits",
     "named": false
   },
   {

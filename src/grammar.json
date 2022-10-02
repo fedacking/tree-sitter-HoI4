@@ -6,7 +6,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "ideas_declaration"
+          "name": "ideas_declarations"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "character_declarations"
         },
         {
           "type": "SYMBOL",
@@ -14,31 +18,7 @@
         }
       ]
     },
-    "function_declarations": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "function_declaration"
-      }
-    },
-    "function_declaration": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "SYMBOL",
-          "name": "effect_block"
-        }
-      ]
-    },
-    "ideas_declaration": {
+    "ideas_declarations": {
       "type": "SEQ",
       "members": [
         {
@@ -104,6 +84,405 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "character_declarations": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "characters"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "character"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "character": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_character_content"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_character_content": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "character_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "character_portraits"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "character_country_leader"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "character_advisor"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "character_commander"
+        }
+      ]
+    },
+    "character_name": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_loc_key_string"
+        }
+      ]
+    },
+    "character_portraits": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "portraits"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "character_portrait"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "character_portrait": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "civilian"
+            },
+            {
+              "type": "STRING",
+              "value": "army"
+            },
+            {
+              "type": "STRING",
+              "value": "navy"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_character_portrait_content"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_character_portrait_content": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "large"
+            },
+            {
+              "type": "STRING",
+              "value": "small"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_gfx"
+        }
+      ]
+    },
+    "character_country_leader": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "country_leader"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_country_leader_content"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_country_leader_content": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "desc"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expire"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ideology"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "id"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "traits"
+        }
+      ]
+    },
+    "character_advisor": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "advisor"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_advisor_content"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_advisor_content": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "traits"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "idea_advisor_content"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_idea_content"
+        }
+      ]
+    },
+    "idea_advisor_content": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "slot"
+            },
+            {
+              "type": "STRING",
+              "value": "idea_token"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "character_commander": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "field_marshal"
+            },
+            {
+              "type": "STRING",
+              "value": "corps_commander"
+            },
+            {
+              "type": "STRING",
+              "value": "navy_leader"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_commander_content"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_commander_content": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "traits"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "id"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "skill"
+        }
+      ]
+    },
+    "function_declarations": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "function_declaration"
+      }
+    },
+    "function_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "effect_block"
         }
       ]
     },
@@ -218,7 +597,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "removal_cost"
+          "name": "cost"
         },
         {
           "type": "SYMBOL",
@@ -322,17 +701,47 @@
           "value": "="
         },
         {
-          "type": "STRING",
-          "value": "civilian"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "civilian"
+            },
+            {
+              "type": "STRING",
+              "value": "hidden"
+            },
+            {
+              "type": "STRING",
+              "value": "army"
+            },
+            {
+              "type": "STRING",
+              "value": "air"
+            },
+            {
+              "type": "STRING",
+              "value": "navy"
+            }
+          ]
         }
       ]
     },
-    "removal_cost": {
+    "cost": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "removal_cost"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "cost"
+            },
+            {
+              "type": "STRING",
+              "value": "removal_cost"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -413,6 +822,146 @@
         }
       ]
     },
+    "desc": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "desc"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_loc_key_string"
+        }
+      ]
+    },
+    "expire": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "expire"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "date"
+        }
+      ]
+    },
+    "ideology": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ideology"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "legacy_id"
+            },
+            {
+              "type": "STRING",
+              "value": "id"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "skill": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "skill"
+            },
+            {
+              "type": "STRING",
+              "value": "attack_skill"
+            },
+            {
+              "type": "STRING",
+              "value": "defense_skill"
+            },
+            {
+              "type": "STRING",
+              "value": "maneuvering_skill"
+            },
+            {
+              "type": "STRING",
+              "value": "coordination_skill"
+            },
+            {
+              "type": "STRING",
+              "value": "planning_skill"
+            },
+            {
+              "type": "STRING",
+              "value": "logistics_skill"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "traits": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "traits"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "traits_block"
+        }
+      ]
+    },
     "trigger_block": {
       "type": "SEQ",
       "members": [
@@ -465,6 +1014,26 @@
           "content": {
             "type": "SYMBOL",
             "name": "_effect"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "traits_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
           }
         },
         {
@@ -671,7 +1240,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "loc_key"
+                  "name": "_loc_key_string"
                 }
               ]
             },
@@ -812,7 +1381,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "loc_key"
+          "name": "_loc_key_string"
         }
       ]
     },
@@ -1568,6 +2137,23 @@
         }
       ]
     },
+    "date": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "[1-9]{1,4}.[1-9]{1,2}.[1-9]{1,2}"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
+    },
     "number": {
       "type": "TOKEN",
       "content": {
@@ -1633,6 +2219,65 @@
         {
           "type": "PATTERN",
           "value": "[a-zA-Z_]\\w*\\^?\\w*"
+        }
+      ]
+    },
+    "_gfx": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "gfx_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "gfx_key"
+        }
+      ]
+    },
+    "gfx_string": {
+      "type": "PATTERN",
+      "value": "\".*\""
+    },
+    "gfx_key": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_]\\w*"
+    },
+    "_loc_key_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "loc_key"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loc_key_enclosed"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loc_string"
+        }
+      ]
+    },
+    "loc_string": {
+      "type": "PATTERN",
+      "value": "\".*\""
+    },
+    "loc_key_enclosed": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loc_key"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
         }
       ]
     },

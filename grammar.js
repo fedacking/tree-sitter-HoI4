@@ -6,24 +6,14 @@ module.exports = grammar({
     ],
     
     rules: {
-        // Ideas Block
 
         translation_unit: $ => choice(
-            $.ideas_declaration,
+            $.ideas_declarations,
+			$.character_declarations,
             $.function_declarations
         ),
 
-        function_declarations: $ => repeat1(
-          $.function_declaration
-        ),
-
-        function_declaration: $ => seq(
-            $.identifier,
-            '=',
-            $.effect_block
-        ),
-
-        ideas_declaration: $ => seq(
+        ideas_declarations: $ => seq(
             'ideas',
             '=',
             '{',
@@ -42,6 +32,132 @@ module.exports = grammar({
             '{',
             repeat($.mid_level_idea),
             '}'
+        ),
+
+        character_declarations: $ => seq(
+            'characters',
+            '=',
+            '{',
+            repeat($.character),
+            '}'
+        ),
+
+		character: $ => seq(
+			$.identifier,
+			'=',
+			'{',
+			repeat($._character_content),
+			'}'
+		),
+
+		_character_content: $ => choice(
+			$.character_name,
+			$.character_portraits,
+			$.character_country_leader,
+			$.character_advisor,
+			$.character_commander
+		),
+
+		character_name: $ => seq(
+			'name',
+			'=',
+			$._loc_key_string
+		),
+
+		character_portraits: $ => seq(
+			'portraits',
+			'=',
+			'{',
+			repeat($.character_portrait),
+			'}'
+		),
+
+		character_portrait: $ => seq(
+			choice(
+				'civilian',
+				'army',
+				'navy'
+			),
+			'=',
+			'{',
+			repeat($._character_portrait_content),
+			'}'
+		),
+
+		_character_portrait_content: $ => seq(
+			choice(
+				'large',
+				'small'
+			),
+			'=',
+			$._gfx
+		),
+
+		character_country_leader: $ => seq(
+			'country_leader',
+			'=',
+			'{',
+			repeat($._country_leader_content),
+			'}'
+		),
+
+		_country_leader_content: $ => choice(
+			$.desc,
+			$.expire,
+			$.ideology,
+			$.id,
+			$.traits,
+		),
+
+		character_advisor: $ => seq(
+			'advisor',
+			'=',
+			'{',
+			repeat($._advisor_content),
+			'}'
+		),
+
+		_advisor_content: $ => choice(
+			$.traits,
+			$.idea_advisor_content,
+			$._idea_content
+		),
+
+		idea_advisor_content: $ => seq(
+			choice(
+				'slot',
+				'idea_token'
+			),
+			'=',
+			$.identifier
+		),
+
+		character_commander: $ => seq(
+			choice(
+				'field_marshal',
+				'corps_commander',
+				'navy_leader'
+			),
+			'=',
+			'{',
+			repeat($._commander_content),
+			'}'
+		),
+
+		_commander_content: $ => choice(
+			$.traits,
+			$.id,
+			$.skill
+		),
+
+        function_declarations: $ => repeat1(
+          $.function_declaration
+        ),
+
+        function_declaration: $ => seq(
+            $.identifier,
+            '=',
+            $.effect_block
         ),
 
         law_idea_block: $ => seq(
@@ -81,7 +197,7 @@ module.exports = grammar({
             // Effects
             $.on_add,
 
-            $.removal_cost,
+            $.cost,
             $.ledger,
             $.picture,
             $.default,
@@ -115,11 +231,20 @@ module.exports = grammar({
         ledger: $ => seq(
             'ledger',
             '=',
-            'civilian'
+            choice(
+				'civilian',
+				'hidden',
+				'army',
+				'air',
+				'navy'
+			)
         ),
 
-        removal_cost: $ => seq(
-            'removal_cost',
+        cost: $ => seq(
+            choice(
+				'cost',
+				'removal_cost'
+			),
             '=',
             $.number
         ),
@@ -148,6 +273,56 @@ module.exports = grammar({
             )
         ),
 
+		// I put here everything related to the info about leaders
+		desc: $ => seq(
+			'desc',
+			'=',
+			$._loc_key_string
+		),
+
+		expire: $ => seq(
+			'expire',
+			'=',
+			$.date
+		),
+
+		ideology: $ => seq(
+			'ideology',
+			'=',
+			$.identifier
+		),
+
+		id: $ => seq(
+			choice(
+				'legacy_id',
+				'id',
+			),
+			'=',
+			$.number
+		),
+
+		skill: $ => seq(
+			choice(
+				'skill',
+				'attack_skill',
+				'defense_skill',
+				'maneuvering_skill',
+				'coordination_skill',
+				'planning_skill',
+				'logistics_skill'
+			),
+			'=',
+			$.number
+		),
+
+		traits: $ => seq(
+			'traits',
+			'=',
+			$.traits_block
+		),
+
+
+		// Block Stuff
         trigger_block: $ => seq(
             '{',
             repeat($._trigger),
@@ -163,6 +338,12 @@ module.exports = grammar({
         effect_block: $ => seq(
             '{',
             repeat($._effect),
+            '}'
+        ),
+
+        traits_block: $ => seq(
+            '{',
+            repeat($.identifier),
             '}'
         ),
 
@@ -222,7 +403,7 @@ module.exports = grammar({
 			optional(seq(
 				'tooltip',
 				'=',
-				$.loc_key
+				$._loc_key_string
 			))
         ),
 
@@ -269,7 +450,7 @@ module.exports = grammar({
         custom_modifier_tooltip: $ => seq(
             'custom_modifier_tooltip',
             '=',
-            $.loc_key
+            $._loc_key_string
         ),
 
         _effect: $ => choice(
@@ -506,6 +687,12 @@ module.exports = grammar({
             $.trigger_block,
         ),
 
+        date: $ => seq(
+            '"',
+            /[1-9]{1,4}.[1-9]{1,2}.[1-9]{1,2}/,
+			'"'
+        ),
+
         number: $ => token(seq(
             optional(/[-\+]/),
             choice(
@@ -522,6 +709,29 @@ module.exports = grammar({
             /modifier@\w*/,
             /[a-zA-Z_]\w*\^?\w*/,
         ),
+
+		_gfx: $ => choice(
+			$.gfx_string,
+			$.gfx_key
+		),
+
+		gfx_string: $ => /".*"/,
+
+        gfx_key: $ => /[a-zA-Z_]\w*/,
+
+		_loc_key_string: $ => choice(
+			$.loc_key,
+			$.loc_key_enclosed,
+			$.loc_string
+		),
+
+		loc_string: $ => /".*"/,
+
+		loc_key_enclosed: $ => seq(
+			'"',	
+			$.loc_key,	
+			'"'	
+		),
 
         loc_key: $ => /[a-zA-Z_]\w*/,
 
