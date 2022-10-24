@@ -53,9 +53,39 @@
     }
   },
   {
-    "type": "cancel_if_invalid",
+    "type": "bool",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "cancel_if_invalid",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "capital_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "state_id",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "character",
@@ -78,15 +108,15 @@
           "named": true
         },
         {
-          "type": "character_name",
-          "named": true
-        },
-        {
           "type": "character_portraits",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "name_declaration",
           "named": true
         }
       ]
@@ -213,7 +243,7 @@
     }
   },
   {
-    "type": "character_name",
+    "type": "character_effect",
     "named": true,
     "fields": {},
     "children": {
@@ -221,15 +251,7 @@
       "required": true,
       "types": [
         {
-          "type": "loc_key",
-          "named": true
-        },
-        {
-          "type": "loc_key_enclosed",
-          "named": true
-        },
-        {
-          "type": "loc_string",
+          "type": "identifier",
           "named": true
         }
       ]
@@ -407,6 +429,21 @@
     }
   },
   {
+    "type": "core_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "cost",
     "named": true,
     "fields": {},
@@ -437,6 +474,150 @@
     }
   },
   {
+    "type": "create_equipment_variant_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "create_equipment_variant_effect_model",
+          "named": true
+        },
+        {
+          "type": "create_equipment_variant_effect_modules",
+          "named": true
+        },
+        {
+          "type": "create_equipment_variant_effect_name_group",
+          "named": true
+        },
+        {
+          "type": "create_equipment_variant_effect_obsolete",
+          "named": true
+        },
+        {
+          "type": "create_equipment_variant_effect_parent_version",
+          "named": true
+        },
+        {
+          "type": "create_equipment_variant_effect_role_icon_index",
+          "named": true
+        },
+        {
+          "type": "create_equipment_variant_effect_upgrades",
+          "named": true
+        },
+        {
+          "type": "icon_declaration",
+          "named": true
+        },
+        {
+          "type": "name_declaration",
+          "named": true
+        },
+        {
+          "type": "type_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "create_equipment_variant_effect_model",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "loc_key",
+          "named": true
+        },
+        {
+          "type": "loc_key_enclosed",
+          "named": true
+        },
+        {
+          "type": "loc_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "create_equipment_variant_effect_modules",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "create_equipment_variant_effect_name_group",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "create_equipment_variant_effect_obsolete",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "create_equipment_variant_effect_parent_version",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "create_equipment_variant_effect_role_icon_index",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "create_equipment_variant_effect_upgrades",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "custom_modifier_tooltip",
     "named": true,
     "fields": {},
@@ -460,14 +641,19 @@
     }
   },
   {
-    "type": "date",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "default",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "desc",
@@ -524,46 +710,7 @@
           "named": true
         },
         {
-          "type": "clamp_variable_effect",
-          "named": true
-        },
-        {
-          "type": "clear_array",
-          "named": true
-        },
-        {
-          "type": "dynamic_modifier_effect",
-          "named": true
-        },
-        {
-          "type": "log_effect",
-          "named": true
-        },
-        {
-          "type": "scope_change",
-          "named": true
-        },
-        {
-          "type": "scripted_effect",
-          "named": true
-        },
-        {
-          "type": "variable_math_effect",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "effect_limit_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "array_math_effect",
+          "type": "character_effect",
           "named": true
         },
         {
@@ -575,11 +722,31 @@
           "named": true
         },
         {
+          "type": "create_equipment_variant_effect",
+          "named": true
+        },
+        {
           "type": "dynamic_modifier_effect",
+          "named": true
+        },
+        {
+          "type": "equipment_effect",
           "named": true
         },
         {
           "type": "for_loop_limits",
+          "named": true
+        },
+        {
+          "type": "ideas_effect",
+          "named": true
+        },
+        {
+          "type": "identifier_effect",
+          "named": true
+        },
+        {
+          "type": "intelligence_agency_effect",
           "named": true
         },
         {
@@ -591,6 +758,14 @@
           "named": true
         },
         {
+          "type": "number_effect",
+          "named": true
+        },
+        {
+          "type": "oob_effect",
+          "named": true
+        },
+        {
           "type": "scope_change",
           "named": true
         },
@@ -599,7 +774,111 @@
           "named": true
         },
         {
+          "type": "set_autonomy_effect",
+          "named": true
+        },
+        {
+          "type": "set_politics_effect",
+          "named": true
+        },
+        {
+          "type": "set_popularities_effect",
+          "named": true
+        },
+        {
+          "type": "set_technology_effect",
+          "named": true
+        },
+        {
+          "type": "tag_effect",
+          "named": true
+        },
+        {
           "type": "variable_math_effect",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "equipment_amount",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "equipment_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "equipment_amount",
+          "named": true
+        },
+        {
+          "type": "equipment_producer",
+          "named": true
+        },
+        {
+          "type": "equipment_variant_name",
+          "named": true
+        },
+        {
+          "type": "target_declaration",
+          "named": true
+        },
+        {
+          "type": "type_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "equipment_producer",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "equipment_variant_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "loc_key",
+          "named": true
+        },
+        {
+          "type": "loc_key_enclosed",
+          "named": true
+        },
+        {
+          "type": "loc_string",
           "named": true
         }
       ]
@@ -682,6 +961,129 @@
     "type": "gfx_string",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "has_dlc",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "history_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_math_effect",
+          "named": true
+        },
+        {
+          "type": "capital_declaration",
+          "named": true
+        },
+        {
+          "type": "character_effect",
+          "named": true
+        },
+        {
+          "type": "clamp_variable_effect",
+          "named": true
+        },
+        {
+          "type": "clear_array",
+          "named": true
+        },
+        {
+          "type": "create_equipment_variant_effect",
+          "named": true
+        },
+        {
+          "type": "dynamic_modifier_effect",
+          "named": true
+        },
+        {
+          "type": "equipment_effect",
+          "named": true
+        },
+        {
+          "type": "ideas_effect",
+          "named": true
+        },
+        {
+          "type": "identifier_effect",
+          "named": true
+        },
+        {
+          "type": "intelligence_agency_effect",
+          "named": true
+        },
+        {
+          "type": "log_effect",
+          "named": true
+        },
+        {
+          "type": "number_effect",
+          "named": true
+        },
+        {
+          "type": "oob_effect",
+          "named": true
+        },
+        {
+          "type": "scope_change",
+          "named": true
+        },
+        {
+          "type": "scripted_effect",
+          "named": true
+        },
+        {
+          "type": "set_autonomy_effect",
+          "named": true
+        },
+        {
+          "type": "set_politics_effect",
+          "named": true
+        },
+        {
+          "type": "set_popularities_effect",
+          "named": true
+        },
+        {
+          "type": "set_technology_effect",
+          "named": true
+        },
+        {
+          "type": "tag_effect",
+          "named": true
+        },
+        {
+          "type": "variable_math_effect",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "icon_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "gfx_key",
+          "named": true
+        },
+        {
+          "type": "gfx_string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "id",
@@ -806,9 +1208,39 @@
     }
   },
   {
+    "type": "ideas_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "identifier",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "identifier_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "ideology",
@@ -820,6 +1252,25 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "intelligence_agency_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "icon_declaration",
+          "named": true
+        },
+        {
+          "type": "name_declaration",
           "named": true
         }
       ]
@@ -851,7 +1302,17 @@
   {
     "type": "law_yes",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "ledger",
@@ -980,6 +1441,44 @@
     }
   },
   {
+    "type": "name_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "loc_key",
+          "named": true
+        },
+        {
+          "type": "loc_key_enclosed",
+          "named": true
+        },
+        {
+          "type": "loc_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "number_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "on_add",
     "named": true,
     "fields": {},
@@ -993,6 +1492,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "oob_effect",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "picture",
@@ -1010,6 +1514,44 @@
     }
   },
   {
+    "type": "province_buildings",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "resources_category",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "scope_change",
     "named": true,
     "fields": {},
@@ -1018,11 +1560,38 @@
       "required": true,
       "types": [
         {
-          "type": "effect_limit_block",
+          "type": "effect_block",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "scope_change_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scope_change_id",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "event_target",
+          "named": true
+        },
+        {
+          "type": "state_id",
+          "named": true
+        },
+        {
+          "type": "tag",
+          "named": true
+        },
+        {
+          "type": "var_id",
           "named": true
         }
       ]
@@ -1044,6 +1613,192 @@
     }
   },
   {
+    "type": "set_autonomy_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "set_autonomy_effect_level",
+          "named": true
+        },
+        {
+          "type": "target_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_autonomy_effect_level",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_politics_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "name_declaration",
+          "named": true
+        },
+        {
+          "type": "set_politics_effect_election_frequency",
+          "named": true
+        },
+        {
+          "type": "set_politics_effect_elections_allowed",
+          "named": true
+        },
+        {
+          "type": "set_politics_effect_last_election",
+          "named": true
+        },
+        {
+          "type": "set_politics_effect_long_name",
+          "named": true
+        },
+        {
+          "type": "set_politics_effect_ruling_party",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_politics_effect_election_frequency",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_politics_effect_elections_allowed",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_politics_effect_last_election",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_politics_effect_long_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "loc_key",
+          "named": true
+        },
+        {
+          "type": "loc_key_enclosed",
+          "named": true
+        },
+        {
+          "type": "loc_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_politics_effect_ruling_party",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_popularities_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_technology_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "technology_effect",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "skill",
     "named": true,
     "fields": {},
@@ -1053,6 +1808,191 @@
       "types": [
         {
           "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "state_buildings",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "province_buildings",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "state_category",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "state_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "id",
+          "named": true
+        },
+        {
+          "type": "name_declaration",
+          "named": true
+        },
+        {
+          "type": "resources_category",
+          "named": true
+        },
+        {
+          "type": "state_category",
+          "named": true
+        },
+        {
+          "type": "state_history",
+          "named": true
+        },
+        {
+          "type": "state_manpower",
+          "named": true
+        },
+        {
+          "type": "state_provinces",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "state_history",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "core_effect",
+          "named": true
+        },
+        {
+          "type": "state_buildings",
+          "named": true
+        },
+        {
+          "type": "victory_points",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "state_id",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "state_manpower",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "state_provinces",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "tag_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "target_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "technology_effect",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -1105,7 +2045,15 @@
           "named": true
         },
         {
+          "type": "history_declaration",
+          "named": true
+        },
+        {
           "type": "ideas_declarations",
+          "named": true
+        },
+        {
+          "type": "state_declaration",
           "named": true
         }
       ]
@@ -1125,6 +2073,10 @@
         },
         {
           "type": "comp_trigger",
+          "named": true
+        },
+        {
+          "type": "has_dlc",
           "named": true
         },
         {
@@ -1148,6 +2100,10 @@
         },
         {
           "type": "comp_trigger",
+          "named": true
+        },
+        {
+          "type": "has_dlc",
           "named": true
         },
         {
@@ -1175,6 +2131,21 @@
         },
         {
           "type": "trigger_limit_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -1234,7 +2205,30 @@
     }
   },
   {
+    "type": "victory_points",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "1",
+    "named": false
+  },
+  {
+    "type": "2",
     "named": false
   },
   {
@@ -1250,11 +2244,51 @@
     "named": false
   },
   {
+    "type": "FROM",
+    "named": false
+  },
+  {
+    "type": "PREV",
+    "named": false
+  },
+  {
+    "type": "ROOT",
+    "named": false
+  },
+  {
+    "type": "THIS",
+    "named": false
+  },
+  {
+    "type": "add_claim_of",
+    "named": false
+  },
+  {
+    "type": "add_core_of",
+    "named": false
+  },
+  {
     "type": "add_dynamic_modifier",
     "named": false
   },
   {
+    "type": "add_equipment_to_stockpile",
+    "named": false
+  },
+  {
+    "type": "add_ideas",
+    "named": false
+  },
+  {
+    "type": "add_political_power",
+    "named": false
+  },
+  {
     "type": "add_to_array",
+    "named": false
+  },
+  {
+    "type": "add_to_faction",
     "named": false
   },
   {
@@ -1290,6 +2324,10 @@
     "named": false
   },
   {
+    "type": "amount",
+    "named": false
+  },
+  {
     "type": "army",
     "named": false
   },
@@ -1302,6 +2340,14 @@
     "named": false
   },
   {
+    "type": "auto",
+    "named": false
+  },
+  {
+    "type": "autonomy_state",
+    "named": false
+  },
+  {
     "type": "available",
     "named": false
   },
@@ -1310,11 +2356,23 @@
     "named": false
   },
   {
+    "type": "buildings",
+    "named": false
+  },
+  {
     "type": "cancel",
     "named": false
   },
   {
     "type": "cancel_if_invalid",
+    "named": false
+  },
+  {
+    "type": "capital",
+    "named": false
+  },
+  {
+    "type": "capital_scope",
     "named": false
   },
   {
@@ -1354,6 +2412,14 @@
     "named": false
   },
   {
+    "type": "complete_national_focus",
+    "named": false
+  },
+  {
+    "type": "controller",
+    "named": false
+  },
+  {
     "type": "coordination_skill",
     "named": false
   },
@@ -1374,8 +2440,24 @@
     "named": false
   },
   {
+    "type": "create_equipment_variant",
+    "named": false
+  },
+  {
+    "type": "create_faction",
+    "named": false
+  },
+  {
+    "type": "create_intelligence_agency",
+    "named": false
+  },
+  {
     "type": "custom_modifier_tooltip",
     "named": false
+  },
+  {
+    "type": "date",
+    "named": true
   },
   {
     "type": "days",
@@ -1402,6 +2484,14 @@
     "named": false
   },
   {
+    "type": "election_frequency",
+    "named": false
+  },
+  {
+    "type": "elections_allowed",
+    "named": false
+  },
+  {
     "type": "end",
     "named": false
   },
@@ -1410,7 +2500,15 @@
     "named": false
   },
   {
+    "type": "event_target",
+    "named": true
+  },
+  {
     "type": "expire",
+    "named": false
+  },
+  {
+    "type": "faction_leader",
     "named": false
   },
   {
@@ -1426,6 +2524,18 @@
     "named": false
   },
   {
+    "type": "for_each_loop",
+    "named": false
+  },
+  {
+    "type": "for_each_scope_loop",
+    "named": false
+  },
+  {
+    "type": "for_loop_effect",
+    "named": false
+  },
+  {
     "type": "greater_than",
     "named": false
   },
@@ -1434,7 +2544,23 @@
     "named": false
   },
   {
+    "type": "has_dlc",
+    "named": false
+  },
+  {
     "type": "hidden",
+    "named": false
+  },
+  {
+    "type": "hidden_effect",
+    "named": false
+  },
+  {
+    "type": "history",
+    "named": false
+  },
+  {
+    "type": "icon",
     "named": false
   },
   {
@@ -1454,11 +2580,19 @@
     "named": false
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
     "type": "index",
     "named": false
   },
   {
     "type": "large",
+    "named": false
+  },
+  {
+    "type": "last_election",
     "named": false
   },
   {
@@ -1486,6 +2620,10 @@
     "named": false
   },
   {
+    "type": "load_oob",
+    "named": false
+  },
+  {
     "type": "log",
     "named": false
   },
@@ -1494,7 +2632,15 @@
     "named": false
   },
   {
+    "type": "long_name",
+    "named": false
+  },
+  {
     "type": "maneuvering_skill",
+    "named": false
+  },
+  {
+    "type": "manpower",
     "named": false
   },
   {
@@ -1506,7 +2652,15 @@
     "named": false
   },
   {
+    "type": "model",
+    "named": false
+  },
+  {
     "type": "modifier",
+    "named": false
+  },
+  {
+    "type": "modules",
     "named": false
   },
   {
@@ -1530,6 +2684,10 @@
     "named": false
   },
   {
+    "type": "name_group",
+    "named": false
+  },
+  {
     "type": "navy",
     "named": false
   },
@@ -1550,7 +2708,23 @@
     "named": true
   },
   {
+    "type": "obsolete",
+    "named": false
+  },
+  {
     "type": "on_add",
+    "named": false
+  },
+  {
+    "type": "overlord",
+    "named": false
+  },
+  {
+    "type": "owner",
+    "named": false
+  },
+  {
+    "type": "parent_version",
     "named": false
   },
   {
@@ -1563,6 +2737,22 @@
   },
   {
     "type": "portraits",
+    "named": false
+  },
+  {
+    "type": "producer",
+    "named": false
+  },
+  {
+    "type": "provinces",
+    "named": false
+  },
+  {
+    "type": "random_scope_in_array",
+    "named": false
+  },
+  {
+    "type": "recruit_character",
     "named": false
   },
   {
@@ -1582,6 +2772,10 @@
     "named": false
   },
   {
+    "type": "remove_idea",
+    "named": false
+  },
+  {
     "type": "resize_array",
     "named": false
   },
@@ -1590,7 +2784,75 @@
     "named": false
   },
   {
+    "type": "resources",
+    "named": false
+  },
+  {
+    "type": "role_icon_index",
+    "named": false
+  },
+  {
+    "type": "ruling_party",
+    "named": false
+  },
+  {
     "type": "scope",
+    "named": false
+  },
+  {
+    "type": "send_equipment",
+    "named": false
+  },
+  {
+    "type": "send_equipment_fraction",
+    "named": false
+  },
+  {
+    "type": "set_autonomy",
+    "named": false
+  },
+  {
+    "type": "set_convoys",
+    "named": false
+  },
+  {
+    "type": "set_country_flag",
+    "named": false
+  },
+  {
+    "type": "set_equipment_fraction",
+    "named": false
+  },
+  {
+    "type": "set_keyed_oob",
+    "named": false
+  },
+  {
+    "type": "set_naval_oob",
+    "named": false
+  },
+  {
+    "type": "set_oob",
+    "named": false
+  },
+  {
+    "type": "set_politics",
+    "named": false
+  },
+  {
+    "type": "set_popularities",
+    "named": false
+  },
+  {
+    "type": "set_research_slots",
+    "named": false
+  },
+  {
+    "type": "set_stability",
+    "named": false
+  },
+  {
+    "type": "set_technology",
     "named": false
   },
   {
@@ -1599,6 +2861,10 @@
   },
   {
     "type": "set_variable",
+    "named": false
+  },
+  {
+    "type": "set_war_support",
     "named": false
   },
   {
@@ -1618,11 +2884,23 @@
     "named": false
   },
   {
+    "type": "state",
+    "named": false
+  },
+  {
+    "type": "state_category",
+    "named": false
+  },
+  {
     "type": "subtract_from_temp_variable",
     "named": false
   },
   {
     "type": "subtract_from_variable",
+    "named": false
+  },
+  {
+    "type": "target",
     "named": false
   },
   {
@@ -1634,11 +2912,35 @@
     "named": false
   },
   {
+    "type": "type",
+    "named": false
+  },
+  {
+    "type": "upgrades",
+    "named": false
+  },
+  {
     "type": "value",
     "named": false
   },
   {
     "type": "var",
+    "named": false
+  },
+  {
+    "type": "var_id",
+    "named": true
+  },
+  {
+    "type": "variant_name",
+    "named": false
+  },
+  {
+    "type": "victory_points",
+    "named": false
+  },
+  {
+    "type": "while_loop_effect",
     "named": false
   },
   {

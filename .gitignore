@@ -105,6 +105,7 @@ dist
 
 # Files for testing stuff
 Hoi4/*
+output/*
 
 # Ide Stuff
 .vs/*

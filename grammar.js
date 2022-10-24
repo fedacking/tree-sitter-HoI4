@@ -10,8 +10,109 @@ module.exports = grammar({
         translation_unit: $ => choice(
             $.ideas_declarations,
 			$.character_declarations,
-            $.function_declarations
+            $.function_declarations,
+            $.history_declaration,
+            $.state_declaration,
         ),
+
+		state_declaration: $ => seq(
+            'state',
+            '=',
+            '{',
+            repeat($._state_content),
+            '}'
+		),
+
+		_state_content: $ => choice(
+			$.id,
+			$.name_declaration,
+			$.state_manpower,
+			$.state_category,
+			$.resources_category,
+			$.state_provinces,
+			$.state_history,
+		),
+
+		state_category: $ => seq(
+			'state_category',
+			'=',
+			$.identifier
+		),
+
+		resources_category: $ => seq(
+			'resources',
+			'=',
+			'{',
+			repeat($._identifier_number),
+			'}'
+		),
+
+		state_manpower: $ => seq(
+			'manpower',
+			'=',
+			$.number
+		),
+
+		state_provinces: $ => seq(
+			'provinces',
+			'=',
+			'{',
+			repeat1($.number),
+			'}'
+		),
+
+		state_history: $ => seq(
+			'history',
+			'=',
+			'{',
+			repeat1($._state_history),
+			'}'
+		),
+
+		_state_history: $ => choice(
+			$.core_effect,
+			$.victory_points,
+			$.state_buildings,
+		),
+
+		core_effect: $ => seq(
+			choice(
+				'owner',
+				'add_core_of',
+				'add_claim_of'
+			),
+			'=',
+			$.tag
+		),
+
+		victory_points: $ => seq(
+			'victory_points',
+			'=',
+			'{',
+			repeat1($.number),
+			'}'
+		),
+
+		state_buildings: $ => seq(
+			'buildings',
+			'=',
+			'{',
+			repeat($._state_building),
+			'}'
+		),
+
+		_state_building: $ => choice(
+			$._identifier_number,
+			$.province_buildings
+		),
+
+		province_buildings: $ => seq(
+			$.number,
+			'=',
+			'{',
+			repeat($._identifier_number),
+			'}'
+		),
 
         ideas_declarations: $ => seq(
             'ideas',
@@ -51,17 +152,11 @@ module.exports = grammar({
 		),
 
 		_character_content: $ => choice(
-			$.character_name,
+			$.name_declaration,
 			$.character_portraits,
 			$.character_country_leader,
 			$.character_advisor,
 			$.character_commander
-		),
-
-		character_name: $ => seq(
-			'name',
-			'=',
-			$._loc_key_string
 		),
 
 		character_portraits: $ => seq(
@@ -151,7 +246,7 @@ module.exports = grammar({
 		),
 
         function_declarations: $ => repeat1(
-          $.function_declaration
+    		$.function_declaration
         ),
 
         function_declaration: $ => seq(
@@ -159,6 +254,21 @@ module.exports = grammar({
             '=',
             $.effect_block
         ),
+
+        history_declaration: $ => repeat1(
+        	$._history_effect
+        ),
+
+		_history_effect: $ => choice(
+			$.capital_declaration,
+			$._effect
+		),
+
+		capital_declaration: $ => seq(
+			'capital',
+			'=',
+			$.state_id
+		),
 
         law_idea_block: $ => seq(
             $.identifier,
@@ -172,7 +282,7 @@ module.exports = grammar({
         law_yes: $ => seq(
             'law',
             '=',
-            'yes'
+            $.bool
         ),
 
         mid_level_idea: $ => seq(
@@ -258,19 +368,13 @@ module.exports = grammar({
         default: $ => seq(
             'default',
             '=',
-            choice(
-                'no',
-                'yes'
-            )
+            $.bool
         ),
 
         cancel_if_invalid: $ => seq(
             'cancel_if_invalid',
             '=',
-            choice(
-                'no',
-                'yes'
-            )
+            $.bool
         ),
 
 		// I put here everything related to the info about leaders
@@ -335,12 +439,6 @@ module.exports = grammar({
             '}'
         ),
 
-        effect_block: $ => seq(
-            '{',
-            repeat($._effect),
-            '}'
-        ),
-
         traits_block: $ => seq(
             '{',
             repeat($.identifier),
@@ -351,7 +449,16 @@ module.exports = grammar({
             $.check_variable,
             $.comp_trigger,
             $.trigger_scope_change,
+
+			// Unique stuff
+			$.has_dlc
         ),
+
+		has_dlc: $ => seq(
+			'has_dlc',
+			'=',
+			/".*"/
+		),
 
         trigger_scope_change: $ => seq(
             $.identifier,
@@ -465,12 +572,29 @@ module.exports = grammar({
 
             // Variable Math
             $.variable_math_effect,
-            $.array_math_effect,
             $.clamp_variable_effect,
 
-            // Unique stuff
+			// Array Math
+            $.array_math_effect,
+            $.clear_array,
+
+			// Generic Effects for hoi4 stuff
+			$.identifier_effect,
+			$.tag_effect,
+			$.number_effect,
+			$.character_effect,
+			
+            // stuff that is effect = { unique contents }
+			$.ideas_effect,
+			$.set_technology_effect,
+			$.oob_effect,
             $.dynamic_modifier_effect,
-            $.clear_array
+            $.intelligence_agency_effect,
+			$.set_autonomy_effect,
+			$.set_politics_effect,
+			$.set_popularities_effect,
+			$.create_equipment_variant_effect,
+			$.equipment_effect,
         ),
 
         log_effect: $ => seq(
@@ -572,6 +696,90 @@ module.exports = grammar({
             "}"
         ),
 
+		number_effect: $ => seq(
+			$._number_effect,
+			'=',
+			$.number
+		),
+
+		_number_effect: $ => choice(
+			'set_research_slots',
+			'set_convoys',
+			'set_war_support',
+			'set_stability',
+			'add_political_power'
+		),
+
+		identifier_effect: $ => seq(
+			$._identifier_effect,
+			'=',
+			$.identifier
+		),
+
+		_identifier_effect: $ => choice(
+			'set_country_flag',
+			'create_faction',
+			'complete_national_focus',
+		),
+
+		tag_effect: $ => seq(
+			$._tag_effect,
+			'=',
+			$.tag
+		),
+
+		_tag_effect: $ => choice(
+			'add_to_faction',
+		),
+
+		character_effect: $ => seq(
+			'recruit_character',
+			'=',
+			$.identifier
+		),
+
+		ideas_effect: $ => seq(
+			$._ideas_effect,
+			'=',
+			'{',
+			repeat1($.identifier),
+			'}'
+		),
+
+		_ideas_effect: $ => choice(
+			'add_ideas',
+			'remove_idea'
+		),
+
+		set_technology_effect: $ => seq(
+			'set_technology',
+			'=',
+			'{',
+			repeat($.technology_effect),
+			'}'
+		),
+
+		technology_effect: $ => seq(
+			$.identifier,
+			'=',
+			choice('1', '2')
+		),
+
+		oob_effect: $ => seq(
+			$._oob_effect,
+			'=',
+			/".*"/
+		),
+
+		_oob_effect: $ => choice(
+			choice(
+				'set_naval_oob',
+				'set_oob',
+				'set_keyed_oob',
+				'load_oob'
+			),
+		),
+
         dynamic_modifier_effect: $ => seq(
             choice(
                 'add_dynamic_modifier',
@@ -594,6 +802,221 @@ module.exports = grammar({
             )),
             '}'
         ),
+
+        intelligence_agency_effect: $ => seq(
+            'create_intelligence_agency',
+            '=',
+            '{',
+			repeat($._intelligence_agency_effect_content),
+            '}'
+        ),
+
+        _intelligence_agency_effect_content: $ => choice(
+            $.name_declaration,
+			$.icon_declaration
+        ),
+
+        set_autonomy_effect: $ => seq(
+            'set_autonomy',
+            '=',
+            '{',
+			repeat($._set_autonomy_effect_content),
+            '}'
+        ),
+
+        _set_autonomy_effect_content: $ => choice(
+            $.target_declaration,
+			$.set_autonomy_effect_level
+        ),
+		
+		set_autonomy_effect_level: $ => seq(
+			'autonomy_state',
+			'=',
+			$.identifier
+		),
+
+        set_politics_effect: $ => seq(
+            'set_politics',
+            '=',
+            '{',
+			repeat($._set_politics_effect_content),
+            '}'
+        ),
+
+        _set_politics_effect_content: $ => choice(
+            $.set_politics_effect_ruling_party,
+            $.set_politics_effect_elections_allowed,
+            $.set_politics_effect_last_election,
+            $.set_politics_effect_election_frequency,
+            $.set_politics_effect_long_name,
+			$.name_declaration
+        ),
+		
+		set_politics_effect_ruling_party: $ => seq(
+			'ruling_party',
+			'=',
+			$.identifier
+		),
+		
+		set_politics_effect_elections_allowed: $ => seq(
+			'elections_allowed',
+			'=',
+			$.bool
+		),
+		
+		set_politics_effect_last_election: $ => seq(
+			'last_election',
+			'=',
+			$.date
+		),
+		
+		set_politics_effect_election_frequency: $ => seq(
+			'election_frequency',
+			'=',
+			$.number
+		),
+		
+		set_politics_effect_long_name: $ => seq(
+			'long_name',
+			'=',
+			$._loc_key_string
+		),
+
+		set_popularities_effect: $ => seq(
+			'set_popularities',
+			'=',
+			'{',
+			repeat($._set_popularities_effect_content),
+			'}'
+		),
+
+		_set_popularities_effect_content: $ => seq(
+			$.identifier,
+			'=',
+			$.number
+		),
+
+		create_equipment_variant_effect: $ => seq(
+			'create_equipment_variant',
+			'=',
+			'{',
+			repeat($._create_equipment_variant_effect_content),
+			'}'
+		),
+		
+		_create_equipment_variant_effect_content: $ => choice(
+			$.name_declaration,
+			$.icon_declaration,
+			$.type_declaration,
+			$.create_equipment_variant_effect_parent_version,
+			$.create_equipment_variant_effect_obsolete,
+			$.create_equipment_variant_effect_name_group,
+			$.create_equipment_variant_effect_role_icon_index,
+			$.create_equipment_variant_effect_model,
+			$.create_equipment_variant_effect_upgrades,
+			$.create_equipment_variant_effect_modules,
+		),
+
+		create_equipment_variant_effect_parent_version: $ => seq(
+			'parent_version',
+			'=',
+			/[0-9]+/
+		),
+
+		create_equipment_variant_effect_obsolete: $ => seq(
+			'obsolete',
+			'=',
+			$.bool
+		),
+
+		create_equipment_variant_effect_name_group: $ => seq(
+			'name_group',
+			'=',
+			$.identifier
+		),
+
+		create_equipment_variant_effect_role_icon_index: $ => seq(
+			'role_icon_index',
+			'=',
+			choice(
+				'auto',
+				/[0-9]+/
+			)
+		),
+
+		create_equipment_variant_effect_model: $ => seq(
+			'model',
+			'=',
+			$._loc_key_string
+		),
+
+		create_equipment_variant_effect_upgrades: $ => seq(
+			'upgrades',
+			'=',
+			'{',
+			repeat(seq(
+				$.identifier,
+				'=',
+				/[0-9]+/
+			)),
+			'}'
+		),
+
+		create_equipment_variant_effect_modules: $ => seq(
+			'modules',
+			'=',
+			'{',
+			repeat(seq(
+				$.identifier,
+				'=',
+				$.identifier
+			)),
+			'}'
+		),
+
+        equipment_effect: $ => seq(
+            $._equipment_effect,
+            '=',
+            '{',
+			repeat($._equipment_effect_content),
+            '}'
+        ),
+
+		_equipment_effect: $ => choice(
+			'set_equipment_fraction',
+			'add_equipment_to_stockpile',
+			'send_equipment',
+			'send_equipment_fraction',
+		),
+
+		_equipment_effect_content: $ => choice(
+			$.type_declaration,
+			$.target_declaration,
+			$.equipment_amount,
+			$.equipment_producer,
+			$.equipment_variant_name,
+		),
+
+		equipment_amount: $ => seq(
+			'amount',
+			'=',
+			choice(
+				/[0-9]+/,
+				$.identifier
+			)
+		),
+
+		equipment_producer: $ => seq(
+			'producer',
+			'=',
+			$.identifier
+		),
+
+		equipment_variant_name: $ => seq(
+			'variant_name',
+			'=',
+			$._loc_key_string
+		),
 
         clear_array: $ => seq(
             choice(
@@ -652,12 +1075,38 @@ module.exports = grammar({
         ),
 
         scope_change: $ => seq(
-            $.identifier,
+            $.scope_change_id,
             "=",
-            $.effect_limit_block
+            $.effect_block
         ),
 
-        effect_limit_block: $ => seq(
+		scope_change_id: $ => choice(
+			// Array Scopes
+			'random_scope_in_array',
+			'for_each_scope_loop',
+			'for_each_loop',
+
+			// Flow effects
+			'for_loop_effect',
+			'while_loop_effect',
+			'if',
+			
+			// Actual Scopes
+			'overlord',
+			'faction_leader',
+			'owner',
+			'controller',
+			'capital_scope',
+			$.event_target,
+			$.var_id,
+			$.tag,
+			$.state_id,
+
+			// Pseudo scope
+			'hidden_effect'
+		),
+
+        effect_block: $ => seq(
             '{',
             repeat($.for_loop_limits),
             optional($.limit_trigger_block),
@@ -687,11 +1136,37 @@ module.exports = grammar({
             $.trigger_block,
         ),
 
-        date: $ => seq(
-            '"',
-            /[1-9]{1,4}.[1-9]{1,2}.[1-9]{1,2}/,
-			'"'
-        ),
+		name_declaration: $ => seq(
+			'name',
+			'=',
+			$._loc_key_string
+		),
+
+		icon_declaration: $ => seq(
+			'icon',
+			'=',
+			$._gfx
+		),
+		
+		type_declaration: $ => seq(
+			'type',
+			'=',
+			$.identifier
+		),
+		
+		target_declaration: $ => seq(
+			'target',
+			'=',
+			$.tag
+		),
+
+		_identifier_number: $ => seq(
+			$.identifier,
+			'=',
+			$.number
+		),
+
+        date: $ => /"[0-9]{1,4}.[0-9]{1,2}.[0-9]{1,2}"/,
 
         number: $ => token(seq(
             optional(/[-\+]/),
@@ -709,6 +1184,20 @@ module.exports = grammar({
             /modifier@\w*/,
             /[a-zA-Z_]\w*\^?\w*/,
         ),
+
+		event_target: $ => /event_target:\w+/,
+		
+		var_id: $ => /var_id:\w+\^?\w+/,
+
+		state_id: $ => /[0-9]+/,
+
+        tag: $ => choice(
+			/[A-Z]{3}/,
+			'ROOT',
+			'THIS',
+			'FROM',
+			'PREV'
+		),
 
 		_gfx: $ => choice(
 			$.gfx_string,
@@ -734,6 +1223,11 @@ module.exports = grammar({
 		),
 
         loc_key: $ => /[a-zA-Z_]\w*/,
+
+		bool: $ => choice(
+			'yes',
+			'no'
+		),
 
         comment: $ => token(
             seq('#', /(\\(.|\r?\n)|[^\\\n])*/),
